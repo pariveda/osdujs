@@ -1,0 +1,19 @@
+{
+  "name": "osdu-service",
+  "version": "0.0.1",
+  "description": "Client to interact with OSDU applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests --recursive"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.773.0",
+    "axios": "^0.20.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "mocha": "^8.2.0"
+  }
+}
