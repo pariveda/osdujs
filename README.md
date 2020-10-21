@@ -2,6 +2,8 @@
 
 A simple node client/service for the [OSDU](https://community.opengroup.org/osdu) data platform.
 
+![Unit/Integration Tests](https://github.com/pariveda/node-osdu-service/workflows/Node.js%20CI/badge.svg)
+
 ## Contents
 
 - [Service](#service)
