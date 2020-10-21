@@ -1,8 +1,8 @@
 # Release Notes
 
-## `0.0.1` Prerelease
+## `1.0.0`
 
-**Release Date**: N/A
+**Release Date**: 2020-12-21
 
 Initial framework for AWS and Simple OSDU clients and R2 service (sans Entitlements integration).
 

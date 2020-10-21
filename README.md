@@ -1,8 +1,8 @@
-# osdu-service
+# osdujs
 
 A simple node client/service for the [OSDU](https://community.opengroup.org/osdu) data platform.
 
-![Unit/Integration Tests](https://github.com/pariveda/node-osdu-service/workflows/Node.js%20CI/badge.svg)
+[![npm version](https://badge.fury.io/js/osdujs.svg)](https://www.npmjs.com/package/osdujs) ![Tests](https://github.com/pariveda/osdujs/workflows/Tests/badge.svg)
 
 ## Contents
 
