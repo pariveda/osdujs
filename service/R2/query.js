@@ -11,26 +11,31 @@ class OsduR2QueryService extends OsduR2BaseService {
         }
         return await this._client.post(`/api/search/v2/query`, query_params, this._dataPartition);
     }
-    async queryAll(query_params, batch_size) {
-        var batchSize = 100;
-        if (batch_size > 0) {
-            batchSize = batch_size;
+    async queryWithPaging(query_params, cursor) {
+        if (!query_params.limit) {
+            query_params.limit = 1000;
         }
-        query_params.offset = 0;
-        query_params.limit = batchSize;
+        query_params.offset = undefined;
+        if (cursor) {
+            query_params.cursor = cursor;
+        }
+        return await this._client.post(`/api/search/v2/query_with_cursor`, query_params, this._dataPartition);
+    }
+    async queryAll(query_params) {
         var output = {
             results: [],
             totalCount: 0,
             batches: 0
         };
         var response;
+        var cursor = undefined;
         do {
-            response = await this._client.post(`/api/search/v2/query`, query_params, this._dataPartition);
+            response = await this.queryWithPaging(query_params, cursor);
             output.results.push(...response.results);
             output.totalCount = response.totalCount;
             output.batches++;
-            query_params.offset += batchSize;
-        } while (response.results.length == batchSize);
+            cursor = response.cursor;
+        } while (cursor);
         return output;
     }
 }

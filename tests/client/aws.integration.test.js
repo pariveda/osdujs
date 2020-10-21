@@ -113,8 +113,8 @@ describe("AWSOsduClient tests", function() {
                         new OsduQueryExpression(`data.ResourceID:\"srn:file/csv:040769811445061947276214:\"`)
                     )
                 )
-                .build(),
-            1
+                .limit(1)
+                .build()
         );
 
         // Assert

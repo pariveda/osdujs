@@ -17,6 +17,9 @@ class OsduR2StorageService extends OsduR2BaseService {
     async getRecordVersions(record_id) {
         return await this._client.get(`/api/storage/v2/records/versions/${record_id}`, this._dataPartition);
     }
+    async getRecordVersion(record_id, version) {
+        return await this._client.get(`/records/${record_id}/${version}`, this._dataPartition);
+    }
     async storeRecords(records) {
         return await this._client.post(`/api/storage/v2/records`, records, this._dataPartition)
     }

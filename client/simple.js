@@ -12,6 +12,10 @@ class SimpleOsduClient extends BaseOsduClient {
             resolve();
         });
     }
+
+    updateAccessToken(access_token) {
+        this.accessToken = access_token;
+    }
 }
 
 module.exports.SimpleOsduClient = SimpleOsduClient;

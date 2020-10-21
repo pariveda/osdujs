@@ -4,10 +4,12 @@
   "description": "Client to interact with OSDU applications",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests --recursive"
+    "test": "mocha 'tests/**/*.test.js'",
+    "test:unit": "mocha 'tests/**/*.unit.test.js'",
+    "test:integration": "mocha 'tests/**/*.integration.test.js'"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Pariveda Solutions",
+  "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.773.0",
     "axios": "^0.20.0"
