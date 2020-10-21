@@ -1,7 +1,7 @@
 {
   "name": "osdujs",
-  "version": "1.0.0",
-  "description": "Client to interact with OSDU applications",
+  "version": "1.0.1",
+  "description": "Nodejs client and service to interact with OSDU applications",
   "repository": {
     "type" : "git",
     "url" : "https://github.com/pariveda/osdujs.git"

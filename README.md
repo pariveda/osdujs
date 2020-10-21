@@ -122,7 +122,7 @@ KMS keys if encrypted).
 ## Installation
 
 ```bash
-npm install osdu-service
+npm install osdujs
 ```
 
 ## Usage
@@ -132,7 +132,7 @@ npm install osdu-service
 Requires passing the OSDU API url and OSDU access token in the constructor
 
 ```javascript
-const { SimpleOsduClient } = require('osdu-service');
+const { SimpleOsduClient } = require('osdujs');
 
 var osduClient = new SimpleOsduClient(process.env.OSDU_API_URL, process.env.OSDU_ACCESS_TOKEN);
 ```
@@ -156,7 +156,7 @@ Using the simple credential provider:
 const {
     AWSOsduClient,
     AWSOsduSimpleCredentialProvider
-} = require('osdu-service');
+} = require('osdujs');
 
 var osduClient = new AWSOsduClient({
     api_url: process.env.OSDU_API_URL, 
@@ -173,7 +173,7 @@ Using the AWS SSM credential provider:
 const {
     AWSOsduClient,
     AWSOsduSSMCredentialProvider
-} = require('osdu-service');
+} = require('osdujs');
 
 var osduClient = new AWSOsduClient({
     api_url: process.env.OSDU_API_URL, 
@@ -191,13 +191,13 @@ var osduClient = new AWSOsduClient({
 
 ### Using the OsduR2Service
 
-Below are just a few usage examples using the OsduR2Service. See [integration and unit tests](https://github.com/pariveda/node-osdu-service/blob/master/tests) for more copmrehensive usage examples.
+Below are just a few usage examples using the OsduR2Service. See [integration and unit tests](tests) for more copmrehensive usage examples.
 
 Instantiating the service is as simple as passing in the client and the data partition you wish to operate on. For
 more information regarding creating an OSDU client, please see [Instantiating the SimpleOsduClient](#instantiating-the-simpleosduclient) or [Instantiating the AwsOsduClient](#instantiating-the-awsosduclient)
 
 ```javascript
-const { OsduR2Service } = require('osdu-service');
+const { OsduR2Service } = require('osdujs');
 
 var client = createOSDUClient();
 var osduService = new OsduR2Service(client, 'opendes');

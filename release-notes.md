@@ -1,5 +1,13 @@
 # Release Notes
 
+## `1.0.1`
+
+**Release Date**: 2020-12-21
+
+Updates to Readme for package name accuracy and badges.
+
+No functional updates.
+
 ## `1.0.0`
 
 **Release Date**: 2020-12-21
