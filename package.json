@@ -1,7 +1,11 @@
 {
-  "name": "osdu-service",
-  "version": "0.0.1",
+  "name": "osdujs",
+  "version": "1.0.0",
   "description": "Client to interact with OSDU applications",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/pariveda/osdujs.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha 'tests/**/*.test.js'",
