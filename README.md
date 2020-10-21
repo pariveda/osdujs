@@ -4,8 +4,8 @@ A simple node client/service for the [OSDU](https://community.opengroup.org/osdu
 
 ## Contents
 
-- [Service] (#service)
-  * [OsduR2Service] (#osdur2service)
+- [Service](#service)
+  * [OsduR2Service](#osdur2service)
     + [Currently supported methods](#r2-currently-supported-methods)
 - [Clients](#clients)
   * [SimpleOsduClient](#simpleosduclient)
