@@ -3,14 +3,15 @@
   "version": "1.0.1",
   "description": "Nodejs client and service to interact with OSDU applications",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/pariveda/osdujs.git"
+    "type": "git",
+    "url": "https://github.com/pariveda/osdujs.git"
   },
   "main": "index.js",
   "scripts": {
     "test": "mocha 'tests/**/*.test.js'",
     "test:unit": "mocha 'tests/**/*.unit.test.js'",
-    "test:integration": "mocha 'tests/**/*.integration.test.js'"
+    "test:integration": "mocha 'tests/**/*.integration.test.js'",
+    "document": "jsdoc index.js -c jsdoc.json"
   },
   "author": "Pariveda Solutions",
   "license": "MIT",
@@ -19,7 +20,9 @@
     "axios": "^0.20.0"
   },
   "devDependencies": {
+    "better-docs": "^2.3.2",
     "dotenv": "^8.2.0",
+    "jsdoc": "^3.6.6",
     "mocha": "^8.2.0"
   }
 }

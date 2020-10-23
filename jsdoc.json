@@ -1,0 +1,49 @@
+{
+    "source": {
+        "include": ["."],
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|documentation|tests)"
+    },
+    "opts": {
+        "package": "package.json",
+        "encoding": "utf8",
+        "destination": "documentation",
+        "readme": "README.md",
+        "recurse": true,
+        "verbose": true,
+        "template": "node_modules/better-docs"
+    },
+    "tags": {
+        "allowUnknownTags": [
+            "category",
+            "subcategory"
+        ]
+    },
+    "plugins": [
+        "node_modules/better-docs/category",
+        "plugins/markdown"
+    ],
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false,
+        "search": true,
+        "better-docs": {
+            "name": "OsduJS Documentation",
+            "title": "OsduJS",
+	        "hideGenerator": false,
+            "navLinks": [
+                {
+                    "label": "Github",
+                    "href": "https://github.com/pariveda/osdujs"
+                },
+                {
+                    "label": "NPM",
+                    "href": "https://www.npmjs.com/package/osdujs"
+                }
+            ]
+        }
+    },
+    "markdown": {
+        "idInHeadings": true
+    }
+}
