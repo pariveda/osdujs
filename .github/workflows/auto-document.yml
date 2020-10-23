@@ -13,9 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: documentation
+          ref: master
+      - name: Checkout documentation branch
+        run: git checkout documentation
       - name: Merge master to documentation
-        run: git merge origin/master
+        run: git merge master
       - name: Install Node packages
         run: npm install
       - name: Document
