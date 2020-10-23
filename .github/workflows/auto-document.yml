@@ -4,6 +4,7 @@ name: Auto Document
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   document:
