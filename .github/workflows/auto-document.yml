@@ -12,11 +12,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: npm install
+        with:
+          ref: master
+      - uses: actions/checkout@v2
+        with:
+          ref: documentation
+      - name: Merge master to documentation
+        run: git merge master
+      - name: Install Node packages
+        run: npm install
       - name: Document
         run: npm run document
-      - name: Add & Commit
-        uses: EndBug/add-and-commit@v5.1.0
-        with:
-          add: ./documentation/*
-          message: Auto-document
+      - name: Add generated documentation
+        run: git add documentation/*
+      - name: Commit
+        run: git commit -m "Auto-document"
+      - name: Push to documentation branch
+        run: git push
