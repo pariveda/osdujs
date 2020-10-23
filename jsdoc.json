@@ -5,7 +5,6 @@
         "excludePattern": "(node_modules/|documentation|tests)"
     },
     "opts": {
-        "package": "package.json",
         "encoding": "utf8",
         "destination": "documentation",
         "readme": "README.md",

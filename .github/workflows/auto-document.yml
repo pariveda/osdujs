@@ -12,11 +12,26 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: npm install
+        with:
+          ref: master
+      - name: Setup GIT
+        run: |
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config user.name "$GITHUB_ACTOR"
+      - name: Checkout docs branch
+        uses: actions/checkout@v1
+        with:
+          ref: docs
+          clean: false
+      - name: Merge master to documentation
+        run: git merge master
+      - name: Install Node packages
+        run: npm install
       - name: Document
         run: npm run document
-      - name: Add & Commit
-        uses: EndBug/add-and-commit@v5.1.0
-        with:
-          add: ./documentation/*
-          message: Auto-document
+      - name: Add generated documentation
+        run: git add documentation/*
+      - name: Commit
+        run: git commit -m "Auto-document"
+      - name: Push to docs branch
+        run: git push
