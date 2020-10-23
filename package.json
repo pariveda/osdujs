@@ -6,12 +6,13 @@
     "type": "git",
     "url": "https://github.com/pariveda/osdujs.git"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "build": "npx typescript src/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir types",
     "test": "mocha 'tests/**/*.test.js'",
     "test:unit": "mocha 'tests/**/*.unit.test.js'",
     "test:integration": "mocha 'tests/**/*.integration.test.js'",
-    "document": "jsdoc index.js -c jsdoc.json"
+    "document": "jsdoc -c jsdoc.json"
   },
   "author": "Pariveda Solutions",
   "license": "MIT",
@@ -23,6 +24,7 @@
     "better-docs": "^2.3.2",
     "dotenv": "^8.2.0",
     "jsdoc": "^3.6.6",
-    "mocha": "^8.2.0"
+    "mocha": "^8.2.0",
+    "typescript": "^4.0.3"
   }
 }
