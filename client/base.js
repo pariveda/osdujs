@@ -127,7 +127,7 @@ class BaseOsduClient {
      * @param {string} path - The url path for the HTTP POST request (I.E. `/path`)
      * @param {Object} body - The JSON body to send with the HTTP POST request
      * @param {string} data_partition - The data partition against which the request is being made
-     * @returns {Promise<AxiosResponse>} The response from the Axios client
+     * @returns {Promise<Object>} The response data from the Axios client
      */
     post(path, body, data_partition) {
         return this._makeRequest(data_partition, this.axiosClient.post, { path, body });
@@ -138,7 +138,7 @@ class BaseOsduClient {
      * @param {string} path - The url path for the HTTP PUT request (I.E. `/path`)
      * @param {Object} body - The JSON body to send with the HTTP PUT request
      * @param {string} data_partition - The data partition against which the request is being made
-     * @returns {Promise<AxiosResponse>} The response from the Axios client
+     * @returns {Promise<Object>} The response data from the Axios client
      */
     put(path, body, data_partition) {
         return this._makeRequest(data_partition, this.axiosClient.put, { path, body });
@@ -148,7 +148,7 @@ class BaseOsduClient {
      * Convenience method for invoking HTTP GET requests
      * @param {string} path - The url path for the HTTP GET request (I.E. `/path`)
      * @param {string} data_partition - The data partition against which the request is being made
-     * @returns {Promise<AxiosResponse>} The response from the Axios client
+     * @returns {Promise<Object>} The response data from the Axios client
      */
     get(path, data_partition) {
         return this._makeRequest(data_partition, this.axiosClient.get, { path });
@@ -158,7 +158,7 @@ class BaseOsduClient {
      * Convenience method for invoking HTTP DELETE requests
      * @param {string} path - The url path for the HTTP DELETE request (I.E. `/path`)
      * @param {string} data_partition - The data partition against which the request is being made
-     * @returns {Promise<AxiosResponse>} The response from the Axios client
+     * @returns {Promise<Object>} The response data from the Axios client
      */
     delete(path, data_partition) {
         return this._makeRequest(data_partition, this.axiosClient.delete, { path });
