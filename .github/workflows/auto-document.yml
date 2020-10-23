@@ -4,6 +4,7 @@ name: Auto Document
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   document:
@@ -11,6 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - run: npm install
       - name: Document
         run: npm run document
       - name: Add & Commit
