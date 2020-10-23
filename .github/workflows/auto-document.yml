@@ -25,10 +25,12 @@ jobs:
           clean: false
       - name: Merge master to documentation
         run: git merge master
+      - name: Delete old documentation
+        run: rm -rf documentation
+      - name: Remove old documentation from git
+        run: git rm documentation -rf
       - name: Install Node packages
         run: npm install
-      - name: Remove old documentation
-        run: git rm documentation -rf
       - name: Document
         run: npm run document
       - name: Remove old documentation

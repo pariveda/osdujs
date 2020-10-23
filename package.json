@@ -11,7 +11,7 @@
     "test": "mocha 'tests/**/*.test.js'",
     "test:unit": "mocha 'tests/**/*.unit.test.js'",
     "test:integration": "mocha 'tests/**/*.integration.test.js'",
-    "document": "rm -rf documentation && jsdoc index.js -c jsdoc.json"
+    "document": "jsdoc index.js -c jsdoc.json"
   },
   "author": "Pariveda Solutions",
   "license": "MIT",
