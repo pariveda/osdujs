@@ -35,7 +35,7 @@ jobs:
       - name: Document
         run: npm run document
       - name: Add generated docs
-        run: git add docs/*
+        run: git add docs/* -f
       - name: Commit
         run: git commit -m "Auto-document"
       - name: Push to docs branch
