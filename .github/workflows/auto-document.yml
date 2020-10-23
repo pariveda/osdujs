@@ -18,23 +18,23 @@ jobs:
         run: |
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config user.name "$GITHUB_ACTOR"
-      - name: Checkout docs branch
+      - name: Checkout documentation branch
         uses: actions/checkout@v1
         with:
-          ref: docs
+          ref: documentation
           clean: false
       - name: Merge master to documentation
         run: git merge master
-      - name: Delete old documentation
-        run: rm -rf documentation
-      - name: Remove old documentation from git
-        run: git rm documentation -rf
+      - name: Delete old docs
+        run: rm -rf docs
+      - name: Remove old docs from git
+        run: git rm docs -rf
       - name: Install Node packages
         run: npm install
       - name: Document
         run: npm run document
-      - name: Add generated documentation
-        run: git add documentation/*
+      - name: Add generated docs
+        run: git add docs/*
       - name: Commit
         run: git commit -m "Auto-document"
       - name: Push to docs branch
