@@ -18,10 +18,10 @@ jobs:
         run: |
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config user.name "$GITHUB_ACTOR"
-      - name: Checkout documentation branch
+      - name: Checkout docs branch
         uses: actions/checkout@v1
         with:
-          ref: documentation
+          ref: docs
           clean: false
       - name: Merge master to documentation
         run: git merge master
@@ -33,5 +33,5 @@ jobs:
         run: git add documentation/*
       - name: Commit
         run: git commit -m "Auto-document"
-      - name: Push to documentation branch
+      - name: Push to docs branch
         run: git push
