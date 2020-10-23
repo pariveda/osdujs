@@ -19,7 +19,7 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config user.name "$GITHUB_ACTOR"
       - name: Checkout documentation branch
-        run: git checkout documentation
+        run: git checkout -b documentation origin/documentation
       - name: Merge master to documentation
         run: git merge master
       - name: Install Node packages
