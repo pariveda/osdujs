@@ -28,6 +28,7 @@ jobs:
       - name: Delete old docs
         run: rm -rf docs
       - name: Remove old docs from git
+        continue-on-error: true
         run: git rm docs -rf
       - name: Install Node packages
         run: npm install
