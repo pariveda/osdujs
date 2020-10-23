@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OsduJS models/query/osduQueryBuilder.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">OsduJS Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/pariveda/osdujs"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.npmjs.com/package/osdujs"
+                        >
+                            NPM
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Clients</h2><h3>Classes / AWS</h3><ul><li><a href="AWSOsduBaseCredentialProvider.html">AWSOsduBaseCredentialProvider</a></li><li><a href="AWSOsduClient.html">AWSOsduClient</a></li><li><a href="AWSOsduSimpleCredentialProvider.html">AWSOsduSimpleCredentialProvider</a></li><li><a href="AWSOsduSSMCredentialProvider.html">AWSOsduSSMCredentialProvider</a></li></ul><h3>Classes</h3><ul><li><a href="BaseOsduClient.html">BaseOsduClient</a></li></ul><h3>Classes / Simple</h3><ul><li><a href="SimpleOsduClient.html">SimpleOsduClient</a></li></ul></div><div class="category"><h2>Models</h2><h3>Classes / Query</h3><ul><li><a href="OsduQueryBuilder.html">OsduQueryBuilder</a></li><li><a href="OsduQueryExpression.html">OsduQueryExpression</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes / R2</h3><ul><li><a href="OsduR2BaseService.html">OsduR2BaseService</a></li><li><a href="OsduR2DeliveryService.html">OsduR2DeliveryService</a></li><li><a href="OsduR2EntitlementsService.html">OsduR2EntitlementsService</a></li><li><a href="OsduR2LegalService.html">OsduR2LegalService</a></li><li><a href="OsduR2QueryService.html">OsduR2QueryService</a></li><li><a href="OsduR2Service.html">OsduR2Service</a></li><li><a href="OsduR2StorageService.html">OsduR2StorageService</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>models/query/osduQueryBuilder.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const OsduQueryExpression = require('./osduQueryExpression');
+
+/**
+ * Class to build OSDU query bodies with friendly names for each available option
+ * - Note that querys built with this builder must at minimum specify the [kind]{@link OsduQueryBuilder#kind}
+ * - Follows the [OSDU Query Syntax]{@link https://community.opengroup.org/osdu/documentation/-/wikis/Releases/R2.0/OSDU-Query-Syntax}
+ * 
+ * @class
+ * @category Models
+ * @subcategory Query
+ */
+class OsduQueryBuilder {
+    /** @constructor */
+    constructor() {
+    }
+
+    // Setters
+    //// Search Terms
+    /**
+     * Set the OSDU kind to filter the scope of the search.
+     * - Accepts wildcards `*` within kind sections. (I.E. `*:osdu:*:0.2.0`)
+     * @param {string} kind - The OSDU kind with which to filter the search
+     */
+    kind(kind) {
+        this._kind = kind;
+        return this;
+    }
+
+    /**
+     * Set the OSDU compliant query expression to narrow the search results
+     * - OSDU query syntax can be found in [OSDU documentation here]{@link https://community.opengroup.org/osdu/documentation/-/wikis/Releases/R2.0/OSDU-Query-Syntax}
+     * - Note that the passed in expression must be an instance of the [Osdu Query Expression class]{@link OsduQueryExpression}
+     * @param {OsduQueryExpression} query_expression - The query expression used to narrow search results based on the available OSDU data
+     */
+    query(query_expression) {
+        if (!(query_expression instanceof OsduQueryExpression)) {
+            throw new Error(`OsduQueryBuilder query statement must be of type OsduQueryExpressions`);
+        }
+        this._query = query_expression.toString();
+        return this;
+    }
+
+    /**
+     * Set the spacial filter on the OSDU query
+     * - Not yet supported.
+     * @throws Error
+     * @param {undefined} spacial_filter 
+     */
+    spacialFilter(spacial_filter) {
+        throw new Error(`OsduQueryBuilder spacial filters not yet supported`);
+    }
+
+    //// Filter Result Data
+    /**
+     * Set the offset value representing how many records should be skipped before collecting records to return
+     * @deprecated Recommended to use the [paged query]{@link OsduR2QueryService#queryWithPaging} rather than attempting to page via offset
+     * @param {number} offset - The number of records (positive integer) to skip before collecting records to return
+     */
+    offset(offset) {
+        this._offset = offset;
+        return this;
+    }
+
+    /**
+     * Set the maximum limit of records to return within the query results
+     * - In paged queries, this sets the page size
+     * @param {number} limit - The maximum number of records (positive integer) to return
+     */
+    limit(limit) {
+        this._limit = limit;
+        return this;
+    }
+
+    /**
+     * Set the fields to include on the returned records
+     * - Will include these fields where found, but does not guarantee that all records will contain these fields
+     * @param {sring[]} returned_fields 
+     */
+    returnedFields(returned_fields) {
+        if (!Array.isArray(returned_fields) || returned_fields.length == 0) {
+            throw new Error(`OsduQueryBuilder returned fields must be of type Array[String] with minimum length 1`);
+        }
+        this._returnedFields = returned_fields;
+        return this;
+    }
+
+    //// Organization
+    /**
+     * Set the sort order of results prior to paging
+     * @param {string[]} fields - The fields by which to order the results
+     * @param {string[]} order - The order (Ascending/Descending) in which to sort the results on each field. Only accepts "ASC" and "DESC"
+     */
+    sort(fields, order) {
+        if (!Array.isArray(fields) || fields.length == 0) {
+            throw new Error(`OsduQueryBuilder sort fields must be of type Array[String] with minimum length 1`);
+        }
+        else if (!Array.isArray(order) || order.length == 0) {
+            throw new Error(`OsduQueryBuilder sort order must be of type Array[String] with minimum length 1`);
+        }
+        else if (fields.length != order.length) {
+            throw new Error(`OsduQueryBuilder sort fields and sort order must have matching length`);
+        }
+        this._sort = {
+            fields,
+            order
+        }
+        return this;
+    }
+
+    /**
+     * Set the field by which to aggregate results if aggregation is requested
+     * @param {string} field - The OSDU record field by which to aggregate results
+     */
+    aggregateBy(field) {
+        this._aggregateBy = field;
+        return this;
+    }
+
+    // 
+    /**
+     * Construct the query request body based on the attributes set
+     * @returns {Object} The JSON object that is passed into the body of the OSDU API Search request
+     */
+    build() {
+        var queryObject = {};
+
+        if (this._kind) {
+            queryObject.kind = this._kind;
+        }
+        if (this._query) {
+            queryObject.query = this._query;
+        }
+
+        if (this._offset) {
+            queryObject.offset = this._offset;
+        }
+        if (this._limit) {
+            queryObject.limit = this._limit;
+        }
+        if (this._returnedFields) {
+            queryObject.returnedFields = this._returnedFields;
+        }
+
+        if (this._sort) {
+            queryObject.sort = this._sort;
+        }
+        if (this._aggregateBy) {
+            queryObject.aggregateBy = this._aggregateBy;
+        }
+
+        return queryObject;
+    }
+}
+
+module.exports = OsduQueryBuilder;</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+</body>
+</html>

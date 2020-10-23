@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OsduJS Home</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">OsduJS Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/pariveda/osdujs"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.npmjs.com/package/osdujs"
+                        >
+                            NPM
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Clients</h2><h3>Classes / AWS</h3><ul><li><a href="AWSOsduBaseCredentialProvider.html">AWSOsduBaseCredentialProvider</a></li><li><a href="AWSOsduClient.html">AWSOsduClient</a></li><li><a href="AWSOsduSimpleCredentialProvider.html">AWSOsduSimpleCredentialProvider</a></li><li><a href="AWSOsduSSMCredentialProvider.html">AWSOsduSSMCredentialProvider</a></li></ul><h3>Classes</h3><ul><li><a href="BaseOsduClient.html">BaseOsduClient</a></li></ul><h3>Classes / Simple</h3><ul><li><a href="SimpleOsduClient.html">SimpleOsduClient</a></li></ul></div><div class="category"><h2>Models</h2><h3>Classes / Query</h3><ul><li><a href="OsduQueryBuilder.html">OsduQueryBuilder</a></li><li><a href="OsduQueryExpression.html">OsduQueryExpression</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes / R2</h3><ul><li><a href="OsduR2BaseService.html">OsduR2BaseService</a></li><li><a href="OsduR2DeliveryService.html">OsduR2DeliveryService</a></li><li><a href="OsduR2EntitlementsService.html">OsduR2EntitlementsService</a></li><li><a href="OsduR2LegalService.html">OsduR2LegalService</a></li><li><a href="OsduR2QueryService.html">OsduR2QueryService</a></li><li><a href="OsduR2Service.html">OsduR2Service</a></li><li><a href="OsduR2StorageService.html">OsduR2StorageService</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1 id="osdujs">osdujs</h1>
+<p>A simple node client/service for the <a href="https://community.opengroup.org/osdu">OSDU</a> data platform.</p>
+<p><a href="https://www.npmjs.com/package/osdujs"><img src="https://badge.fury.io/js/osdujs.svg" alt="npm version"></a> <img src="https://github.com/pariveda/osdujs/workflows/Tests/badge.svg" alt="Tests"></p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#service">Service</a>
+<ul>
+<li><a href="#osdur2service">OsduR2Service</a>
+<ul>
+<li><a href="#r2-currently-supported-methods">Currently supported methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#clients">Clients</a>
+<ul>
+<li><a href="#simpleosduclient">SimpleOsduClient</a></li>
+<li><a href="#awsosduclient">AwsOsduClient</a></li>
+</ul>
+</li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#instantiating-the-simpleosduclient">Instantiating the SimpleOsduClient</a></li>
+<li><a href="#instantiating-the-awsosduclient">Instantiating the AwsOsduClient</a></li>
+<li><a href="#using-the-osdur2service">Using the OsduR2Service</a>
+<ul>
+<li><a href="#search-for-records-by-query">Search for records by query</a></li>
+<li><a href="#search-with-paging">Search with paging</a></li>
+<li><a href="#search-for-all">Search for all</a></li>
+<li><a href="#get-a-record">Get a record</a></li>
+<li><a href="#upsert-records">Upsert records</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="release-notes.md">Release Notes</a></li>
+</ul>
+<h2 id="service">Service</h2>
+<p>Choose the service that matches your OSDU application instance version.</p>
+<h3 id="osdur2service">OsduR2Service</h3>
+<p>Service to encapsulate the OSDU R2 application endpoints. Provides
+named access to the below supported OSDU methods, all in an async
+manner.</p>
+<h4 id="r2-currently-supported-methods">R2 currently supported methods</h4>
+<ul>
+<li><a href="service/R2/query.js">search</a>
+<ul>
+<li>query</li>
+<li>queryWithPaging</li>
+<li>queryAll</li>
+</ul>
+</li>
+<li><a href="service/R2/storage.js">storage</a>
+<ul>
+<li>getRecords</li>
+<li>getRecord</li>
+<li>getRecordVersions</li>
+<li>getRecordVersion</li>
+<li>storeRecords</li>
+<li>deleteRecord</li>
+<li>ingestManifest</li>
+<li>queryAllKinds</li>
+<li>getSchema</li>
+<li>createSchema</li>
+<li>deleteSchema</li>
+</ul>
+</li>
+<li><a href="service/R2/delivery.js">delivery</a>
+<ul>
+<li>getSignedUrls</li>
+</ul>
+</li>
+<li><a href="service/R2/legal.js">legal</a>
+<ul>
+<li>listLegalTags</li>
+<li>getLegalTags</li>
+<li>validateLegalTags</li>
+<li>getLegalTag</li>
+<li>getLegalTagProperties</li>
+<li>createLegalTag</li>
+<li>updateLegalTag</li>
+<li>deleteLegalTag</li>
+</ul>
+</li>
+<li><a href="service/R2/entitlements.js">entitlements</a></li>
+</ul>
+<h2 id="clients">Clients</h2>
+<p>Choose the client that best meets your needs. The same methods are all supported for each.</p>
+<h3 id="simpleosduclient">SimpleOsduClient</h3>
+<p>BYOT: Bring your own token. Great for business logic that supplements a
+front-end application.</p>
+<p>This client assumes you are obtaining a token yourself (e.g. via your application's
+login form or otheer mechanism. With this SimpleOsduClient, you simply provide that token.
+With this simplicity, you are also then respnsible for refreshing the token as needed and
+either updating or re-instantiating the client with the new token.</p>
+<h3 id="awsosduclient">AwsOsduClient</h3>
+<p>Good for batch tasks that don't have an interactive front-end or back-end applications. Only works with AWS
+hosted OSDU applications. Token management is handled with the AWS SDK directly through the Cognito service.
+You have to supply additional arguments for this.</p>
+<pre class="prettyprint source lang-javascript"><code>new AWSOsduClient({
+    api_url: process.env.OSDU_API_URL, 
+    cognito_client_id: process.env.OSDU_CLIENT_ID, 
+    aws_region: process.env.AWS_REGION, 
+    aws_profile: process.env.AWS_PROFILE, // Note that this is not required and will default to default AWS creds
+    credential_provider: new AWSOsduSimpleCredentialProvider(process.env.OSDU_USERNAME, process.env.OSDU_PASSWORD)
+});
+</code></pre>
+<h4 id="aws-credential-providers">AWS Credential Providers</h4>
+<p>The <code>AwsOsduClient</code> relies upon a credential provider to dynamically retrieve the username and password
+combination used to authenticate with Cognito. These credential providers adhere to a consistent interface
+to <code>GetCredentials</code>. The credential provider pattern allows the <code>AwsOsduClient</code> to dynamically refresh
+its access token, meaning that your application does not need to worry about expired sessions.</p>
+<p>Choose the credential provider that best meets your needs.</p>
+<h5 id="awsosdusimplecredentialprovider">AwsOsduSimpleCredentialProvider</h5>
+<p>Good for local development or user-provided credentials where the client is ephemeral. Accepts username and
+password upon instantiation and holds the values in memory to be reused.</p>
+<h5 id="awsosdussmcredentialprovider">AwsOsduSSMCredentialProvider</h5>
+<p>Good for service connections in back-end applications. Accepts AWS SSM parameter store paths for username and
+password and dynamically retrieves the values via the AWS SDK when requested by the client.
+By default, the OSDU admin user credentials are stored in SSM as follows:</p>
+<ul>
+<li>username: <code>/osdu/osduonaws/admin-user</code></li>
+<li>password: <code>/osdu/osduonaws/admin-password</code>
+Note that this credential provider requires AWS permissions to read the specified SSM parameters (and underlying
+KMS keys if encrypted).</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<pre class="prettyprint source lang-bash"><code>npm install osdujs
+</code></pre>
+<h2 id="usage">Usage</h2>
+<h3 id="instantiating-the-simpleosduclient">Instantiating the SimpleOsduClient</h3>
+<p>Requires passing the OSDU API url and OSDU access token in the constructor</p>
+<pre class="prettyprint source lang-javascript"><code>const { SimpleOsduClient } = require('osdujs');
+
+var osduClient = new SimpleOsduClient(process.env.OSDU_API_URL, process.env.OSDU_ACCESS_TOKEN);
+</code></pre>
+<h3 id="instantiating-the-awsosduclient">Instantiating the AwsOsduClient</h3>
+<p>Requires passing the OSDU API url and supporting AWS information:</p>
+<ul>
+<li>Cognito Client ID: The identifier for the non-secret AWS Cognito client to authenticate with</li>
+<li>AWS Region: The AWS Region in which the Cognito user pool exists</li>
+</ul>
+<p>Also requires a credential provider to provide the username and password with which to authenticate against
+Cognito. See <a href="#aws-credential-providers">Credential Providers</a> for more information.</p>
+<p>Optionally accepts AWS profile to specify a local AWS credentials profile to use to authenticate with AWS.
+Used for local development or stored credentials on an EC2 machine, but recommended not to provide on back-end
+applications to default to permissions specified in the back-end compute instance's IAM Role.</p>
+<p>Using the simple credential provider:</p>
+<pre class="prettyprint source lang-javascript"><code>const {
+    AWSOsduClient,
+    AWSOsduSimpleCredentialProvider
+} = require('osdujs');
+
+var osduClient = new AWSOsduClient({
+    api_url: process.env.OSDU_API_URL, 
+    cognito_client_id: process.env.OSDU_CLIENT_ID, 
+    aws_region: process.env.AWS_REGION, 
+    aws_profile: process.env.AWS_PROFILE, // Optional
+    credential_provider: new AWSOsduSimpleCredentialProvider(process.env.OSDU_USERNAME, process.env.OSDU_PASSWORD)
+});
+</code></pre>
+<p>Using the AWS SSM credential provider:</p>
+<pre class="prettyprint source lang-javascript"><code>const {
+    AWSOsduClient,
+    AWSOsduSSMCredentialProvider
+} = require('osdujs');
+
+var osduClient = new AWSOsduClient({
+    api_url: process.env.OSDU_API_URL, 
+    cognito_client_id: process.env.OSDU_CLIENT_ID, 
+    aws_region: process.env.AWS_REGION, 
+    aws_profile: process.env.AWS_PROFILE, // Optional
+    credential_provider: new AWSOsduSSMCredentialProvider({
+        username_parameter: process.env.OSDU_USERNAME_SSM_PARAMETER, 
+        password_parameter: process.env.OSDU_PASSWORD_SSM_PARAMETER,
+        aws_region: process.env.AWS_REGION,
+        aws_profile: process.env.AWS_PROFILE
+    })
+});
+</code></pre>
+<h3 id="using-the-osdur2service">Using the OsduR2Service</h3>
+<p>Below are just a few usage examples using the OsduR2Service. See <a href="tests">integration and unit tests</a> for more copmrehensive usage examples.</p>
+<p>Instantiating the service is as simple as passing in the client and the data partition you wish to operate on. For
+more information regarding creating an OSDU client, please see <a href="#instantiating-the-simpleosduclient">Instantiating the SimpleOsduClient</a> or <a href="#instantiating-the-awsosduclient">Instantiating the AwsOsduClient</a></p>
+<pre class="prettyprint source lang-javascript"><code>const { OsduR2Service } = require('osdujs');
+
+var client = createOSDUClient();
+var osduService = new OsduR2Service(client, 'opendes');
+</code></pre>
+<h4 id="search-for-records-by-query">Search for records by query</h4>
+<pre class="prettyprint source lang-javascript"><code>var queryResults = await osduService.QueryService.query(
+    (new OsduQueryBuilder())
+        .kind('opendes:osdu:*:*')
+        .build()
+);
+// { results: [ {...}, .... ], totalCount: ##### }
+</code></pre>
+<h4 id="search-with-paging">Search with paging</h4>
+<p>For result sets larger than 1,000 records, use the query with paging method to pull a page with an iterator (cursor).</p>
+<p>Initially:</p>
+<pre class="prettyprint source lang-javascript"><code>var queryResults = await osduService.QueryService.queryWithPaging(
+    (new OsduQueryBuilder())
+        .kind('opendes:osdu:*:*')
+        .build()
+);
+// { results: [ {...}, .... ], cursor: &quot;...&quot;, totalCount: ##### }
+</code></pre>
+<p>With an existing cursor:</p>
+<pre class="prettyprint source lang-javascript"><code>const cursor = &quot;cursor&quot;;
+var queryResults = await osduService.QueryService.queryWithPaging(
+    (new OsduQueryBuilder())
+        .kind('opendes:osdu:*:*')
+        .build(),
+    cursor
+);
+// { results: [ {...}, .... ], cursor: &quot;...&quot;, totalCount: ##### }
+</code></pre>
+<h4 id="search-for-all">Search for all</h4>
+<p>For result sets larger than 1,000 records, use the query all method to pull all records.</p>
+<pre class="prettyprint source lang-javascript"><code>var queryResults = await osduService.QueryService.queryAll(
+    (new OsduQueryBuilder())
+        .kind('opendes:osdu:*:*')
+        .build()
+);
+// { results: [ {...}, .... ], batches: #####, totalCount: ##### }
+</code></pre>
+<h4 id="get-a-record">Get a record</h4>
+<pre class="prettyprint source lang-javascript"><code>const record_id = 'opendes:doc:123456789';
+var record = await osduService.StorageService.getRecord(record_id);
+// { id: 'opendes:doc:123456789', kind: ..., data: {...}, acl: {...}, .... }
+</code></pre>
+<h4 id="upsert-records">Upsert records</h4>
+<pre class="prettyprint source lang-javascript"><code>const fs = require('fs');
+const new_or_updated_record = JSON.parse(
+    fs.readFileSync('./record-123.json').toString()
+);
+var record = await osduService.StorageService.storeRecords([new_or_updated_record]);
+// { recordCount: 1, recordIds: [...], skippedRecordIds: [] }
+</code></pre></article>
+    </section>
+
+
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+</body>
+</html>
