@@ -27,8 +27,12 @@ jobs:
         run: git merge master
       - name: Install Node packages
         run: npm install
+      - name: Remove old documentation
+        run: git rm documentation -rf
       - name: Document
         run: npm run document
+      - name: Remove old documentation
+        run: git rm documentation -rf
       - name: Add generated documentation
         run: git add documentation/*
       - name: Commit
