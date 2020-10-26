@@ -1,5 +1,5 @@
-const OsduR2BaseService = require('./base');
-
+export = OsduR2EntitlementsService;
+declare const OsduR2EntitlementsService_base: typeof import("./base");
 /**
  * Class that provides named access to OSDU R2 Entitlements endpoints
  * - Not yet supported
@@ -9,17 +9,11 @@ const OsduR2BaseService = require('./base');
  * @category Services
  * @subcategory R2
  */
-class OsduR2EntitlementsService extends OsduR2BaseService {
+declare class OsduR2EntitlementsService extends OsduR2EntitlementsService_base {
     /**
      * @constructor
      * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
      * @param {string} data_partition - The data partition against which requests will be made
      */
-    constructor(osdu_client, data_partition) {
-        super(osdu_client, data_partition);
-    }
-    
-    // TODO: Implement Entitlements
+    constructor(osdu_client: any, data_partition: string);
 }
-
-module.exports = OsduR2EntitlementsService;

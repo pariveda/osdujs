@@ -1,4 +1,4 @@
 module.exports = {
-    ...require('./base'),
+    SimpleOsduClient: require('./simple'),
     ...require('./aws')
 }

@@ -1,5 +1,5 @@
-const OsduR2BaseService = require('./base');
-
+export = OsduR2QueryService;
+declare const OsduR2QueryService_base: typeof import("./base");
 /**
  * Class that provides named access to OSDU R2 Query endpoints
  * - [Service Documentation]{@link https://community.opengroup.org/osdu/platform/system/search-service/-/blob/master/docs/tutorial/SearchService.md}
@@ -8,43 +8,26 @@ const OsduR2BaseService = require('./base');
  * @category Services
  * @subcategory R2
  */
-class OsduR2QueryService extends OsduR2BaseService {
+declare class OsduR2QueryService extends OsduR2QueryService_base {
     /**
      * @constructor
      * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
      * @param {string} data_partition - The data partition against which requests will be made
      */
-    constructor(osdu_client, data_partition) {
-        super(osdu_client, data_partition);
-    }
-
+    constructor(osdu_client: any, data_partition: string);
     /**
      * Get OSDU records that match the given query constraints
      * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
      * @returns {Object} The API Response
      */
-    async query(query_params) {
-        if (!query_params.offset) {
-            query_params.offset = 0;
-        }
-        return await this._client.post(`/api/search/v2/query`, query_params, this._dataPartition);
-    }
+    query(query_params: any): any;
     /**
      * Get OSDU records that match the given query constraints
      * - Allow specification of a cursor for paged queries
      * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
      * @returns {Object} The API Response
      */
-    async queryWithPaging(query_params, cursor) {
-        if (!query_params.limit) {
-            query_params.limit = 1000;
-        }
-        query_params.offset = undefined;
-        if (cursor) {
-            query_params.cursor = cursor;
-        }
-        return await this._client.post(`/api/search/v2/query_with_cursor`, query_params, this._dataPartition);
-    }
+    queryWithPaging(query_params: any, cursor: any): any;
     /**
      * Get all OSDU records that match the given query constraints
      * - Will page internally and aggregate results until no more pages are found
@@ -52,23 +35,5 @@ class OsduR2QueryService extends OsduR2BaseService {
      * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
      * @returns {Object} The API Response
      */
-    async queryAll(query_params) {
-        var output = {
-            results: [],
-            totalCount: 0,
-            batches: 0
-        };
-        var response;
-        var cursor = undefined;
-        do {
-            response = await this.queryWithPaging(query_params, cursor);
-            output.results.push(...response.results);
-            output.totalCount = response.totalCount;
-            output.batches++;
-            cursor = response.cursor;
-        } while (cursor);
-        return output;
-    }
+    queryAll(query_params: any): any;
 }
-
-module.exports = OsduR2QueryService;

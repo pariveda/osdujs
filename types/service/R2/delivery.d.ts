@@ -1,5 +1,5 @@
-const OsduR2BaseService = require('./base');
-
+export = OsduR2DeliveryService;
+declare const OsduR2DeliveryService_base: typeof import("./base");
 /**
  * Class that provides named access to OSDU R2 Delivery endpoints
  * - [Service Documentation]{@link https://community.opengroup.org/osdu/documentation/-/wikis/OSDU-(C)/Design-and-Implementation/Ingestion-and-Enrichment-Detail/R2-Delivery}
@@ -8,24 +8,17 @@ const OsduR2BaseService = require('./base');
  * @category Services
  * @subcategory R2
  */
-class OsduR2DeliveryService extends OsduR2BaseService {
+declare class OsduR2DeliveryService extends OsduR2DeliveryService_base {
     /**
      * @constructor
      * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
      * @param {string} data_partition - The data partition against which requests will be made
      */
-    constructor(osdu_client, data_partition) {
-        super(osdu_client, data_partition);
-    }
-    
+    constructor(osdu_client: any, data_partition: string);
     /**
      * Get signed urls for the data file underlying the specified OSDU File records
      * @param {string[]} srns - SRN identifiers of the files for which you wish to retrieve signed urls
      * @returns {Object} The API Response
      */
-    async getSignedUrls(srns) {
-        return await this._client.post(`/api/delivery/v2/GetFileSignedUrl`, { srns }, this._dataPartition);
-    }
+    getSignedUrls(srns: string[]): any;
 }
-
-module.exports = OsduR2DeliveryService;

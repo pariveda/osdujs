@@ -1,5 +1,5 @@
 module.exports = {
-    ...require('./aws'),
-    ...require('./simpleCredentialProvider'),
-    ...require('./ssmCredentialProvider')
+    AWSOsduClient: require('./aws'),
+    AWSOsduSimpleCredentialProvider: require('./simpleCredentialProvider'),
+    AWSOsduSSMCredentialProvider: require('./ssmCredentialProvider')
 }

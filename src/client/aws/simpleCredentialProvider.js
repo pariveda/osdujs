@@ -1,4 +1,4 @@
-const { AWSOsduBaseCredentialProvider } = require('./baseCredentialProvider');
+const AWSOsduBaseCredentialProvider = require('./baseCredentialProvider');
 
 /**
  * Simple credenial provider class that provides Cognito username and password from memory
@@ -32,4 +32,4 @@ class AWSOsduSimpleCredentialProvider extends AWSOsduBaseCredentialProvider {
     }
 }
 
-module.exports.AWSOsduSimpleCredentialProvider = AWSOsduSimpleCredentialProvider;
+module.exports = AWSOsduSimpleCredentialProvider;

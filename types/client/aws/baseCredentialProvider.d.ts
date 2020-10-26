@@ -1,3 +1,4 @@
+export = AWSOsduBaseCredentialProvider;
 /**
  * Abstract class that provides the common bones for AWS credential providers
  * @class
@@ -5,11 +6,7 @@
  * @category Clients
  * @subcategory AWS
  */
-class AWSOsduBaseCredentialProvider {
-    /** @constructor */
-    constructor() {
-    }
-
+declare class AWSOsduBaseCredentialProvider {
     /**
      * Shell method to define the credential provider interface for retrieving credentials
      * @returns {Promise<Object>} credentials - Promise resolving with Cognito username and password
@@ -17,9 +14,5 @@ class AWSOsduBaseCredentialProvider {
      * @returns {string} credentials.password - Cognito password
      * @throws Error
      */
-    async GetCredentials() {
-        throw new Error(`AWSOsduBaseCredentialProvider:GetCredentials is not implemented`);
-    }
+    GetCredentials(): Promise<any>;
 }
-
-module.exports = AWSOsduBaseCredentialProvider;

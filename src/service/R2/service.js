@@ -1,8 +1,8 @@
-const { OsduR2DeliveryService } = require('./delivery');
-const { OsduR2EntitlementsService }  = require('./entitlements');
-const { OsduR2LegalService } = require('./legal');
-const { OsduR2QueryService } = require('./query');
-const { OsduR2StorageService } = require('./storage');
+const OsduR2DeliveryService = require('./delivery');
+const OsduR2EntitlementsService  = require('./entitlements');
+const OsduR2LegalService = require('./legal');
+const OsduR2QueryService = require('./query');
+const OsduR2StorageService = require('./storage');
 
 /**
  * Housing class that provides named access to all OSDU R2 endpoints via child services
@@ -27,4 +27,4 @@ class OsduR2Service {
     }
 }
 
-module.exports.OsduR2Service = OsduR2Service;
+module.exports = OsduR2Service;
