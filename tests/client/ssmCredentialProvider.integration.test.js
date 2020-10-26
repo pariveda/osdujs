@@ -1,7 +1,7 @@
 const {
     AWSOsduClient,
     AWSOsduSSMCredentialProvider
-} = require('../..');
+} = require('../../src');
 const assert = require('assert').strict;
 require('dotenv').config();
 
