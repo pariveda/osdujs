@@ -2,7 +2,7 @@ const {
     OsduR2Service,
     OsduQueryExpression,
     OsduQueryBuilder
-} = require('../../..');
+} = require('../../../src');
 const assert = require('assert').strict;
 
 describe("OsduR2QueryService tests", function() {

@@ -4,7 +4,7 @@ const {
     OsduQueryExpression,
     OsduQueryBuilder,
     AWSOsduSimpleCredentialProvider
-} = require('../..');
+} = require('../../src');
 const assert = require('assert').strict;
 require('dotenv').config();
 

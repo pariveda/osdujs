@@ -1,5 +1,13 @@
 # Release Notes
 
+## `1.0.2`
+
+**Release Date**: TBD
+
+Added Jsdoc style comments w/ generated documentation and Typescript support
+
+No functional updates.
+
 ## `1.0.1`
 
 **Release Date**: 2020-12-21
