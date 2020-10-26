@@ -1,6 +1,6 @@
 {
   "name": "osdujs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Nodejs client and service to interact with OSDU applications",
   "repository": {
     "type": "git",
