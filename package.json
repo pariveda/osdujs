@@ -15,6 +15,11 @@
     "test:integration": "mocha 'tests/**/*.integration.test.js'",
     "document": "jsdoc -c jsdoc.json"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build && git add types/*"
+    }
+  },
   "author": "Pariveda Solutions",
   "license": "MIT",
   "dependencies": {
@@ -24,6 +29,7 @@
   "devDependencies": {
     "better-docs": "^2.3.2",
     "dotenv": "^8.2.0",
+    "husky": "^4.3.0",
     "jsdoc": "^3.6.6",
     "mocha": "^8.2.0",
     "typescript": "^4.0.3"
