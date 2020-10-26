@@ -109,7 +109,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const { BaseOsduClient } = require('./base.js');
+            <pre class="prettyprint source linenums"><code>const BaseOsduClient = require('./base.js');
 
 /**
  * Class that provides a simple BYOT (Bring your own token) implementation for OSDU API clients.
@@ -150,7 +150,7 @@ class SimpleOsduClient extends BaseOsduClient {
     }
 }
 
-module.exports.SimpleOsduClient = SimpleOsduClient;</code></pre>
+module.exports = SimpleOsduClient;</code></pre>
         </article>
     </section>
 

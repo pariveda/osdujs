@@ -109,7 +109,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const { BaseOsduClient } = require('../base.js');
+            <pre class="prettyprint source linenums"><code>const BaseOsduClient = require('../base.js');
 const AWS = require('aws-sdk');
 
 /**
@@ -129,13 +129,13 @@ class AWSOsduClient extends BaseOsduClient {
      * @param {string} params.cognito_client_id - The client id (non-secret) for the OSDU Cognito user pool
      * @param {string} params.aws_region - The AWS region in which the OSDU application is deployed
      * @param {AWSOsduBaseCredentialProvider} params.credential_provider - A credential provider used to dynamically retrieve auth tokens
-     * @param {string} [params.profile] - The AWS credential profile to use when making requests to Cognito (typically only for local development)
+     * @param {string} [params.aws_profile] - The AWS credential profile to use when making requests to Cognito (typically only for local development)
      */
     constructor(params) {
         super(params.api_url);
         this._cognitoClientId = params.cognito_client_id;
         this._awsRegion = params.aws_region;
-        this._profile = params.profile;
+        this._profile = params.aws_profile;
         this._credentialProvider = params.credential_provider;
     }
 
@@ -184,7 +184,7 @@ class AWSOsduClient extends BaseOsduClient {
     }
 }
 
-module.exports.AWSOsduClient = AWSOsduClient;</code></pre>
+module.exports = AWSOsduClient;</code></pre>
         </article>
     </section>
 

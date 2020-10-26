@@ -109,7 +109,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const { OsduR2BaseService } = require('./base');
+            <pre class="prettyprint source linenums"><code>const OsduR2BaseService = require('./base');
 
 /**
  * Class that provides named access to OSDU R2 Delivery endpoints
@@ -139,7 +139,7 @@ class OsduR2DeliveryService extends OsduR2BaseService {
     }
 }
 
-module.exports.OsduR2DeliveryService = OsduR2DeliveryService;</code></pre>
+module.exports = OsduR2DeliveryService;</code></pre>
         </article>
     </section>
 
