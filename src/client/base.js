@@ -158,7 +158,7 @@ class BaseOsduClient {
      * Convenience method for invoking HTTP DELETE requests
      * @param {string} path - The url path for the HTTP DELETE request (I.E. `/path`)
      * @param {string} data_partition - The data partition against which the request is being made
-     * @returns {Promise<Object>} The response data from the Axios client
+     * @returns {Promise<string>} The response data from the Axios client
      */
     delete(path, data_partition) {
         return this._makeRequest(data_partition, this.axiosClient.delete, { path });
