@@ -16,24 +16,116 @@ declare class OsduR2QueryService extends OsduR2QueryService_base {
      */
     constructor(osdu_client: any, data_partition: string);
     /**
+     * Results for particular aggregation grouping within the given query
+     * @typedef {Object} OsduAggregationItem
+     * @property {string} key - Identifier for the aggregation
+     * @property {number} count - Number of items that match this aggregation key
+     */
+    /**
+     * Response to OSDU query
+     * @typedef {Object} OsduQueryResults
+     * @property {OsduRecord[]} results - List of query result records
+     * @property {OsduAggregationItem[]|null} aggregations - List of aggregated records
+     * @property {number} totalCount - Total number of records matched by the query
+     * @property {string} [cursor] - Page marker to resume query at next page
+     */
+    /**
      * Get OSDU records that match the given query constraints
      * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
-     * @returns {Object} The API Response
+     * @returns {OsduQueryResults} The API Response
      */
-    query(query_params: any): any;
+    query(query_params: any): {
+        /**
+         * - List of query result records
+         */
+        results: OsduRecord[];
+        /**
+         * - List of aggregated records
+         */
+        aggregations: {
+            /**
+             * - Identifier for the aggregation
+             */
+            key: string;
+            /**
+             * - Number of items that match this aggregation key
+             */
+            count: number;
+        }[];
+        /**
+         * - Total number of records matched by the query
+         */
+        totalCount: number;
+        /**
+         * - Page marker to resume query at next page
+         */
+        cursor?: string;
+    };
     /**
      * Get OSDU records that match the given query constraints
      * - Allow specification of a cursor for paged queries
      * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
-     * @returns {Object} The API Response
+     * @returns {OsduQueryResults} The API Response
      */
-    queryWithPaging(query_params: any, cursor: any): any;
+    queryWithPaging(query_params: any, cursor: any): {
+        /**
+         * - List of query result records
+         */
+        results: OsduRecord[];
+        /**
+         * - List of aggregated records
+         */
+        aggregations: {
+            /**
+             * - Identifier for the aggregation
+             */
+            key: string;
+            /**
+             * - Number of items that match this aggregation key
+             */
+            count: number;
+        }[];
+        /**
+         * - Total number of records matched by the query
+         */
+        totalCount: number;
+        /**
+         * - Page marker to resume query at next page
+         */
+        cursor?: string;
+    };
     /**
      * Get all OSDU records that match the given query constraints
      * - Will page internally and aggregate results until no more pages are found
      * - Note that this may make multiple network requests if multiple pages are found
      * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
-     * @returns {Object} The API Response
+     * @returns {OsduQueryResults} The API Response
      */
-    queryAll(query_params: any): any;
+    queryAll(query_params: any): {
+        /**
+         * - List of query result records
+         */
+        results: OsduRecord[];
+        /**
+         * - List of aggregated records
+         */
+        aggregations: {
+            /**
+             * - Identifier for the aggregation
+             */
+            key: string;
+            /**
+             * - Number of items that match this aggregation key
+             */
+            count: number;
+        }[];
+        /**
+         * - Total number of records matched by the query
+         */
+        totalCount: number;
+        /**
+         * - Page marker to resume query at next page
+         */
+        cursor?: string;
+    };
 }
