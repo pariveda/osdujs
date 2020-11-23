@@ -4,6 +4,8 @@ A simple node client/service for the [OSDU](https://community.opengroup.org/osdu
 
 [![npm version](https://badge.fury.io/js/osdujs.svg)](https://www.npmjs.com/package/osdujs) ![Tests](https://github.com/pariveda/osdujs/workflows/Tests/badge.svg)
 
+* [API Documentation](https://pariveda.github.io/osdujs/docs/index.html)
+
 ## Contents
 
 - [Service](#service)
