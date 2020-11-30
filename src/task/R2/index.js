@@ -1,5 +1,6 @@
 module.exports = {
     OsduR2Tasks: {
-        UpdateByQuery: require('./updateByQuery')
+        UpdateByQuery: require('./updateByQuery'),
+        DeliverByQuery: require('./deliverByQuery')
     }
 }

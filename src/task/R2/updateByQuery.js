@@ -25,7 +25,7 @@ class OsduR2UpdateByQueryTask extends OsduR2BaseTask {
      * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
      * @returns {OsduR2UpdateByQueryTask} Itself to allow chaining
      */
-    async setQuery(query_params) {
+    setQuery(query_params) {
         this._queryParams = query_params;
         return this;
     }
