@@ -1,5 +1,4 @@
 export = OsduR2LegalService;
-declare const OsduR2LegalService_base: typeof import("./base");
 /**
  * Class that provides named access to OSDU R2 Legal endpoints
  * - [Service Documentation]{@link https://community.opengroup.org/osdu/platform/security-and-compliance/legal/-/blob/master/docs/tutorial/ComplianceService.md}
@@ -8,7 +7,7 @@ declare const OsduR2LegalService_base: typeof import("./base");
  * @category Services
  * @subcategory R2
  */
-declare class OsduR2LegalService extends OsduR2LegalService_base {
+declare class OsduR2LegalService extends OsduR2BaseService {
     /**
      * @constructor
      * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
@@ -62,3 +61,4 @@ declare class OsduR2LegalService extends OsduR2LegalService_base {
      */
     deleteLegalTag(name: any): any;
 }
+import OsduR2BaseService = require("./base");

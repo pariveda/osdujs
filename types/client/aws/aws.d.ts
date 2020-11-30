@@ -1,5 +1,4 @@
 export = AWSOsduClient;
-declare const AWSOsduClient_base: typeof import("../base.js");
 /**
  * Class that provides an AWS implementation for OSDU API clients.
  * - Communicates with AWS Cognito directly to obtain access tokens but does not use the OAuth protocol.
@@ -9,7 +8,7 @@ declare const AWSOsduClient_base: typeof import("../base.js");
  * @category Clients
  * @subcategory AWS
  */
-declare class AWSOsduClient extends AWSOsduClient_base {
+declare class AWSOsduClient extends BaseOsduClient {
     /**
      * @constructor
      * @param {Object} params - The configuration parameters defined below
@@ -34,3 +33,5 @@ declare class AWSOsduClient extends AWSOsduClient_base {
     accessToken: string;
     refreshToken: string;
 }
+import BaseOsduClient = require("../base.js");
+import AWS = require("aws-sdk");

@@ -12,6 +12,7 @@ const OsduQueryExpression = require('./osduQueryExpression');
 class OsduQueryBuilder {
     /** @constructor */
     constructor() {
+        this._kind = "*:*:*:*";
     }
 
     // Setters

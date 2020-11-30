@@ -1,5 +1,4 @@
 export = SimpleOsduClient;
-declare const SimpleOsduClient_base: typeof import("./base.js");
 /**
  * Class that provides a simple BYOT (Bring your own token) implementation for OSDU API clients.
  * - Utilizes the provided access token but does not attempt to safeguard against token expiration
@@ -8,7 +7,7 @@ declare const SimpleOsduClient_base: typeof import("./base.js");
  * @category Clients
  * @subcategory Simple
  */
-declare class SimpleOsduClient extends SimpleOsduClient_base {
+declare class SimpleOsduClient extends BaseOsduClient {
     /**
      * @constructor
      * @param {string} api_url - The url for the OSDU API, with or without a trailing `/`
@@ -22,3 +21,4 @@ declare class SimpleOsduClient extends SimpleOsduClient_base {
      */
     updateAccessToken(access_token: string): void;
 }
+import BaseOsduClient = require("./base.js");

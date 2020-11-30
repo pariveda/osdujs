@@ -1,5 +1,4 @@
 export = OsduR2StorageService;
-declare const OsduR2StorageService_base: typeof import("./base");
 /**
  * Class that provides named access to OSDU R2 Storage endpoints
  * - [Service Documentation]{@link https://community.opengroup.org/osdu/platform/system/storage/-/blob/master/docs/tutorial/StorageService.md}
@@ -8,7 +7,7 @@ declare const OsduR2StorageService_base: typeof import("./base");
  * @category Services
  * @subcategory R2
  */
-declare class OsduR2StorageService extends OsduR2StorageService_base {
+declare class OsduR2StorageService extends OsduR2BaseService {
     /**
      * @constructor
      * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
@@ -84,3 +83,4 @@ declare class OsduR2StorageService extends OsduR2StorageService_base {
      */
     deleteSchema(kind: string): any;
 }
+import OsduR2BaseService = require("./base");

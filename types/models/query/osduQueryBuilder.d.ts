@@ -9,20 +9,20 @@ export = OsduQueryBuilder;
  * @subcategory Query
  */
 declare class OsduQueryBuilder {
+    _kind: string;
     /**
      * Set the OSDU kind to filter the scope of the search.
      * - Accepts wildcards `*` within kind sections. (I.E. `*:osdu:*:0.2.0`)
      * @param {string} kind - The OSDU kind with which to filter the search
      */
     kind(kind: string): OsduQueryBuilder;
-    _kind: string;
     /**
      * Set the OSDU compliant query expression to narrow the search results
      * - OSDU query syntax can be found in [OSDU documentation here]{@link https://community.opengroup.org/osdu/documentation/-/wikis/Releases/R2.0/OSDU-Query-Syntax}
      * - Note that the passed in expression must be an instance of the [Osdu Query Expression class]{@link OsduQueryExpression}
      * @param {OsduQueryExpression} query_expression - The query expression used to narrow search results based on the available OSDU data
      */
-    query(query_expression: import("./osduQueryExpression")): OsduQueryBuilder;
+    query(query_expression: OsduQueryExpression): OsduQueryBuilder;
     _query: string;
     /**
      * Set the spacial filter on the OSDU query
@@ -74,3 +74,4 @@ declare class OsduQueryBuilder {
      */
     build(): any;
 }
+import OsduQueryExpression = require("./osduQueryExpression");

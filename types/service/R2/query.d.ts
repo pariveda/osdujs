@@ -1,5 +1,4 @@
 export = OsduR2QueryService;
-declare const OsduR2QueryService_base: typeof import("./base");
 /**
  * Class that provides named access to OSDU R2 Query endpoints
  * - [Service Documentation]{@link https://community.opengroup.org/osdu/platform/system/search-service/-/blob/master/docs/tutorial/SearchService.md}
@@ -8,7 +7,7 @@ declare const OsduR2QueryService_base: typeof import("./base");
  * @category Services
  * @subcategory R2
  */
-declare class OsduR2QueryService extends OsduR2QueryService_base {
+declare class OsduR2QueryService extends OsduR2BaseService {
     /**
      * @constructor
      * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
@@ -37,3 +36,4 @@ declare class OsduR2QueryService extends OsduR2QueryService_base {
      */
     queryAll(query_params: any): any;
 }
+import OsduR2BaseService = require("./base");

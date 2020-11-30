@@ -1,5 +1,4 @@
 export = OsduR2DeliveryService;
-declare const OsduR2DeliveryService_base: typeof import("./base");
 /**
  * Class that provides named access to OSDU R2 Delivery endpoints
  * - [Service Documentation]{@link https://community.opengroup.org/osdu/documentation/-/wikis/OSDU-(C)/Design-and-Implementation/Ingestion-and-Enrichment-Detail/R2-Delivery}
@@ -8,7 +7,7 @@ declare const OsduR2DeliveryService_base: typeof import("./base");
  * @category Services
  * @subcategory R2
  */
-declare class OsduR2DeliveryService extends OsduR2DeliveryService_base {
+declare class OsduR2DeliveryService extends OsduR2BaseService {
     /**
      * @constructor
      * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
@@ -22,3 +21,4 @@ declare class OsduR2DeliveryService extends OsduR2DeliveryService_base {
      */
     getSignedUrls(srns: string[]): any;
 }
+import OsduR2BaseService = require("./base");
