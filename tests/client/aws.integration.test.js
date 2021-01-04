@@ -62,8 +62,14 @@ describe("AWSOsduClient tests", function() {
         var queryResults = await osduService.QueryService.query(
             (new OsduQueryBuilder())
                 .kind(kind)
+                .limit(1)
+                .build()
+        );
+        queryResults = await osduService.QueryService.query(
+            (new OsduQueryBuilder())
+                .kind(kind)
                 .query(
-                    new OsduQueryExpression(`data.ResourceID:\"srn:file/csv:78903363466313001857976:\"`)
+                    new OsduQueryExpression(`data.ResourceID:\"${queryResults.results[0].data.ResourceID}\"`)
                 )
                 .build()
         );
@@ -83,10 +89,16 @@ describe("AWSOsduClient tests", function() {
         var queryResults = await osduService.QueryService.query(
             (new OsduQueryBuilder())
                 .kind(kind)
+                .limit(2)
+                .build()
+        );
+        queryResults = await osduService.QueryService.query(
+            (new OsduQueryBuilder())
+                .kind(kind)
                 .query(
                     OsduQueryExpression.FromOperator('OR', 
-                        new OsduQueryExpression(`data.ResourceID:\"srn:file/csv:78903363466313001857976:\"`),
-                        new OsduQueryExpression(`data.ResourceID:\"srn:file/csv:040769811445061947276214:\"`)
+                        new OsduQueryExpression(`data.ResourceID:\"${queryResults.results[0].data.ResourceID}\"`),
+                        new OsduQueryExpression(`data.ResourceID:\"${queryResults.results[1].data.ResourceID}\"`)
                     )
                 )
                 .build()
@@ -104,13 +116,19 @@ describe("AWSOsduClient tests", function() {
         const kind = `opendes:osdu:file:0.2.0`;
 
         // Act
-        var queryResults = await osduService.QueryService.queryAll(
+        var queryResults = await osduService.QueryService.query(
+            (new OsduQueryBuilder())
+                .kind(kind)
+                .limit(2)
+                .build()
+        );
+        queryResults = await osduService.QueryService.queryAll(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .query(
                     OsduQueryExpression.FromOperator('OR', 
-                        new OsduQueryExpression(`data.ResourceID:\"srn:file/csv:78903363466313001857976:\"`),
-                        new OsduQueryExpression(`data.ResourceID:\"srn:file/csv:040769811445061947276214:\"`)
+                        new OsduQueryExpression(`data.ResourceID:\"${queryResults.results[0].data.ResourceID}\"`),
+                        new OsduQueryExpression(`data.ResourceID:\"${queryResults.results[1].data.ResourceID}\"`)
                     )
                 )
                 .limit(1)
@@ -127,9 +145,15 @@ describe("AWSOsduClient tests", function() {
         // Assemble
         var awsClient = createAWSOSDUClient();
         var osduService = new OsduR2Service(awsClient, 'opendes');
-        const recordId = `opendes:doc:ce7c6d2e9c81433c929d803735282bef`;
 
         // Act
+        var queryResults = await osduService.QueryService.query(
+            (new OsduQueryBuilder())
+                .kind('*:*:*:*')
+                .limit(1)
+                .build()
+        );
+        const recordId = queryResults.results[0].id;
         var record = await osduService.StorageService.getRecord(recordId);
 
         // Assert
@@ -140,12 +164,18 @@ describe("AWSOsduClient tests", function() {
         // Assemble
         var awsClient = createAWSOSDUClient();
         var osduService = new OsduR2Service(awsClient, 'opendes');
-        const recordIds = [
-            `opendes:doc:ce7c6d2e9c81433c929d803735282bef`, 
-            `opendes:doc:351e1a406fad404eb1ed7d0e5c2c6c30`
-        ];
 
         // Act
+        var queryResults = await osduService.QueryService.query(
+            (new OsduQueryBuilder())
+                .kind('*:*:*:*')
+                .limit(2)
+                .build()
+        );
+        const recordIds = [
+            queryResults.results[0].id,
+            queryResults.results[1].id
+        ];
         var records = await osduService.StorageService.getRecords(recordIds);
 
         // Assert
