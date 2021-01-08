@@ -1,12 +1,11 @@
 export = AWSOsduSSMCredentialProvider;
-declare const AWSOsduSSMCredentialProvider_base: typeof import("./baseCredentialProvider");
 /**
  * Credenial provider class that provides Cognito username and password from AWS SSM parameters
  * @class
  * @category Clients
  * @subcategory AWS
  */
-declare class AWSOsduSSMCredentialProvider extends AWSOsduSSMCredentialProvider_base {
+declare class AWSOsduSSMCredentialProvider extends AWSOsduBaseCredentialProvider {
     /**
      * @param {Object} params - AWS configuration and SSM parameters
      * @param {string} params.aws_region - The AWS region in which the OSDU application is deployed
@@ -26,3 +25,5 @@ declare class AWSOsduSSMCredentialProvider extends AWSOsduSSMCredentialProvider_
     _profile: string;
     _ssm: AWS.SSM;
 }
+import AWSOsduBaseCredentialProvider = require("./baseCredentialProvider");
+import AWS = require("aws-sdk");

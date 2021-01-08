@@ -1,12 +1,11 @@
 export = AWSOsduSimpleCredentialProvider;
-declare const AWSOsduSimpleCredentialProvider_base: typeof import("./baseCredentialProvider");
 /**
  * Simple credenial provider class that provides Cognito username and password from memory
  * @class
  * @category Clients
  * @subcategory AWS
  */
-declare class AWSOsduSimpleCredentialProvider extends AWSOsduSimpleCredentialProvider_base {
+declare class AWSOsduSimpleCredentialProvider extends AWSOsduBaseCredentialProvider {
     /**
      * @constructor
      * @param {string} username - Cognito username
@@ -16,3 +15,4 @@ declare class AWSOsduSimpleCredentialProvider extends AWSOsduSimpleCredentialPro
     _username: string;
     _password: string;
 }
+import AWSOsduBaseCredentialProvider = require("./baseCredentialProvider");

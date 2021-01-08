@@ -14,9 +14,14 @@ declare class OsduR2Service {
      */
     constructor(osdu_client: any, data_partition: string);
     _dataPartition: string;
-    DeliveryService: import("./delivery");
-    EntitlementsService: import("./entitlements");
-    LegalService: import("./legal");
-    QueryService: import("./query");
-    StorageService: import("./storage");
+    DeliveryService: OsduR2DeliveryService;
+    EntitlementsService: OsduR2EntitlementsService;
+    LegalService: OsduR2LegalService;
+    QueryService: OsduR2QueryService;
+    StorageService: OsduR2StorageService;
 }
+import OsduR2DeliveryService = require("./delivery");
+import OsduR2EntitlementsService = require("./entitlements");
+import OsduR2LegalService = require("./legal");
+import OsduR2QueryService = require("./query");
+import OsduR2StorageService = require("./storage");

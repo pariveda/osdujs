@@ -1,4 +1,8 @@
 declare const _exports: {
+    OsduR2Tasks: {
+        UpdateByQuery: typeof import("./task/R2/updateByQuery");
+        DeliverByQuery: typeof import("./task/R2/deliverByQuery");
+    };
     OsduR2DeliveryService: typeof import("./service/R2/delivery");
     OsduR2EntitlementsService: typeof import("./service/R2/entitlements");
     OsduR2LegalService: typeof import("./service/R2/legal");
