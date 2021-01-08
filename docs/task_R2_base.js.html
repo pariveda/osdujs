@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OsduJS service/R2/service.js</title>
+  <title>OsduJS task/R2/base.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>service/R2/service.js</h1>
+                    <h1>task/R2/base.js</h1>
                 </header>
                 
 
@@ -109,36 +109,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const OsduR2DeliveryService = require('./delivery');
-const OsduR2EntitlementsService  = require('./entitlements');
-const OsduR2LegalService = require('./legal');
-const OsduR2QueryService = require('./query');
-const OsduR2StorageService = require('./storage');
-
-/**
- * Housing class that provides named access to all OSDU R2 endpoints via child services
+            <pre class="prettyprint source linenums"><code>/**
+ * Abstract class that provides the common bones for OSDU common task patterns
+ * - Provides the framework for accepting an OSDU service 
+ * - Agnostic to hosting framework (AWS/Azure/GCP/etc.) of the OSDU API
  * @class
- * @category Services
+ * @abstract
+ * @category Tasks
  * @subcategory R2
  */
-class OsduR2Service {
+class OsduR2BaseTask {
     /**
-     * Sets up the sub-component services
      * @constructor
-     * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
+     * @param {OsduR2BaseService} osdu_service - An implementation of the OSDU service class to broker communication with the OSDU API services
      * @param {string} data_partition - The data partition against which requests will be made
      */
-    constructor(osdu_client, data_partition) {
+    constructor(osdu_service, data_partition) {
+        if (!osdu_service) {
+            throw new Error(`Must provide an OSDU service to power the OSDU task`);
+        }
+        this._service = osdu_service;
         this._dataPartition = data_partition;
-        this.DeliveryService = new OsduR2DeliveryService(osdu_client, data_partition);
-        this.EntitlementsService = new OsduR2EntitlementsService(osdu_client, data_partition);
-        this.LegalService = new OsduR2LegalService(osdu_client, data_partition);
-        this.QueryService = new OsduR2QueryService(osdu_client, data_partition);
-        this.StorageService = new OsduR2StorageService(osdu_client, data_partition);
     }
 }
 
-module.exports = OsduR2Service;</code></pre>
+module.exports = OsduR2BaseTask;</code></pre>
         </article>
     </section>
 

@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OsduJS service/R2/service.js</title>
+  <title>OsduJS task/R2/updateByQuery.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>service/R2/service.js</h1>
+                    <h1>task/R2/updateByQuery.js</h1>
                 </header>
                 
 
@@ -109,36 +109,91 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const OsduR2DeliveryService = require('./delivery');
-const OsduR2EntitlementsService  = require('./entitlements');
-const OsduR2LegalService = require('./legal');
-const OsduR2QueryService = require('./query');
-const OsduR2StorageService = require('./storage');
+            <pre class="prettyprint source linenums"><code>const OsduR2BaseTask = require('./base');
+const {
+    OsduQueryBuilder
+} = require('../../models/query');
 
 /**
- * Housing class that provides named access to all OSDU R2 endpoints via child services
+ * Simple task to update records in batches based on a query and a transform functions
  * @class
- * @category Services
+ * @category Tasks
  * @subcategory R2
  */
-class OsduR2Service {
+class OsduR2UpdateByQueryTask extends OsduR2BaseTask {
     /**
-     * Sets up the sub-component services
      * @constructor
-     * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
+     * @param {OsduR2BaseService} osdu_service - An implementation of the OSDU service class to broker communication with the OSDU API services
      * @param {string} data_partition - The data partition against which requests will be made
      */
-    constructor(osdu_client, data_partition) {
-        this._dataPartition = data_partition;
-        this.DeliveryService = new OsduR2DeliveryService(osdu_client, data_partition);
-        this.EntitlementsService = new OsduR2EntitlementsService(osdu_client, data_partition);
-        this.LegalService = new OsduR2LegalService(osdu_client, data_partition);
-        this.QueryService = new OsduR2QueryService(osdu_client, data_partition);
-        this.StorageService = new OsduR2StorageService(osdu_client, data_partition);
+    constructor(osdu_service, data_partition) {
+        super(osdu_service, data_partition);
+        this._queryParams = (new OsduQueryBuilder()).build();
+    }
+
+    /**
+     * Set the query parameters to be used for batched query requests
+     * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
+     * @returns {OsduR2UpdateByQueryTask} Itself to allow chaining
+     */
+    setQuery(query_params) {
+        this._queryParams = query_params;
+        return this;
+    }
+
+    /**
+     * Function that accepts an OSDU record and the OSDU service and asynchronously returns the transformed record
+     *
+     * @callback TransformFunction
+     * @param {Object} osduRecord - The OSDU record in its original state
+     * @param {OsduR2BaseService} OsduR2BaseService - The OSDU service in order to perform any additional operations
+     * @returns {Object} The transformed OSDU record
+     */
+    /**
+     * Execute the task, querying and updating in batches based on the set query parameters and the provided transform function
+     * @param {TransformFunction} transform_function - Function that accepts an OSDU record and the OSDU service and asynchronously returns the transformed record
+     * @returns {Object} A summary of the performed task, including a list of the ids of transformed records `transformedRecords`, the total count of records for the query `totalCount`, the number of batches that succeeded `batches`, the last cursor used (if an error was encountered) `lastCursor`, and the error that was thrown (if encountered) `error`
+     */
+    async execute(transform_function) {
+        var output = {
+            transformedRecords: [],
+            totalCount: 0,
+            batches: 0,
+            error: undefined,
+            lastCursor: undefined
+        };
+        var response;
+        var cursor = undefined;
+        try {
+            do {
+                var transformedRecords = [];
+                response = await this._service.QueryService.queryWithPaging(this._queryParams, cursor);
+                output.totalCount = response.totalCount;
+                const updatedRecords = [];
+                for (let index = 0; index &lt; response.results.length; index++) {
+                    updatedRecords.push(
+                        await transform_function(
+                            response.results[index], 
+                            this._service
+                        )
+                    );
+                    transformedRecords.push(response.results[index].id);
+                }
+                await this._service.StorageService.storeRecords(updatedRecords);
+                cursor = response.cursor;
+                output.batches++;
+                output.transformedRecords.push(...transformedRecords);
+            } while (cursor);
+        }
+        catch (err) {
+            output.error = err;
+            output.lastCursor = cursor;
+        }
+        return output;
     }
 }
 
-module.exports = OsduR2Service;</code></pre>
+module.exports = OsduR2UpdateByQueryTask;</code></pre>
         </article>
     </section>
 
