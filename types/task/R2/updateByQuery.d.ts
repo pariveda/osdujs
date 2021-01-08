@@ -20,10 +20,18 @@ declare class OsduR2UpdateByQueryTask extends OsduR2BaseTask {
      */
     setQuery(query_params: any): OsduR2UpdateByQueryTask;
     /**
+     * Function that accepts an OSDU record and the OSDU service and asynchronously returns the transformed record
+     *
+     * @callback TransformFunction
+     * @param {Object} osduRecord - The OSDU record in its original state
+     * @param {OsduR2BaseService} OsduR2BaseService - The OSDU service in order to perform any additional operations
+     * @returns {Object} The transformed OSDU record
+     */
+    /**
      * Execute the task, querying and updating in batches based on the set query parameters and the provided transform function
-     * @param {Function<Object, OsduR2BaseService, Promise<Object>>} transform_function - Function that accepts an OSDU record and the OSDU service and asynchronously returns the transformed record
+     * @param {TransformFunction} transform_function - Function that accepts an OSDU record and the OSDU service and asynchronously returns the transformed record
      * @returns {Object} A summary of the performed task, including a list of the ids of transformed records `transformedRecords`, the total count of records for the query `totalCount`, the number of batches that succeeded `batches`, the last cursor used (if an error was encountered) `lastCursor`, and the error that was thrown (if encountered) `error`
      */
-    execute(transform_function: Function): any;
+    execute(transform_function: (osduRecord: any, OsduR2BaseService: any) => any): any;
 }
 import OsduR2BaseTask = require("./base");
