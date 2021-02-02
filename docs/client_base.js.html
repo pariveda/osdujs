@@ -212,25 +212,35 @@ class BaseOsduClient {
         }
 
         // Handle response
-        switch(response.status) {
-            case 200:
+        if (response.status >= 200 &amp;&amp; response.status &lt; 300) {
+            if (response.data) {
                 return response.data;
-            case 401:
-            case 403:
-                await this._refreshAccessToken();
-            case 500:
-                // Validate iteration and retry
-                const maxAttempts = 3;
-                if (iteration > maxAttempts) {
-                    throw new Error(`Failed retrying method with the OSDU API: [${response.status}] ${response.statusText}`);
-                }
-                else {
-                    return this._makeRequest(data_partition, method, args, iteration+1);
-                }
-                break;
-            default:
-                throw new Error(`Invalid response code from the OSDU API: [${response.status}] ${response.statusText}`);
+            }
+            else {
+                return true;
+            }
         }
+        if (response.status == 404) {
+            return undefined;
+        }
+        if (response.status == 401 || response.status == 403) {
+            await this._refreshAccessToken();
+        }
+        if ([401, 403, 500].includes(response.status)) {
+            // Validate iteration and retry
+            const maxAttempts = 3;
+            if (iteration > maxAttempts) {
+                const err = new Error(`Failed retrying method with the OSDU API: [${response.status}] ${response.statusText}`);
+                err.response = response;
+                throw err;
+            }
+            else {
+                return this._makeRequest(data_partition, method, args, iteration+1);
+            }
+        }
+        const err = new Error(`Invalid response code from the OSDU API: [${response.status}] ${response.statusText}`);
+        err.response = response;
+        throw err;
     }
 
     /**

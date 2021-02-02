@@ -172,7 +172,7 @@ class OsduR2StorageService extends OsduR2BaseService {
      * @returns {Object} The API Response
      */
     async storeRecords(records) {
-        return await this._client.post(`/api/storage/v2/records`, records, this._dataPartition)
+        return await this._client.put(`/api/storage/v2/records`, records, this._dataPartition)
     }
     /**
      * Delete OSDU record
