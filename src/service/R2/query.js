@@ -19,9 +19,24 @@ class OsduR2QueryService extends OsduR2BaseService {
     }
 
     /**
+     * Results for particular aggregation grouping within the given query
+     * @typedef {Object} OsduAggregationItem
+     * @property {string} key - Identifier for the aggregation
+     * @property {number} count - Number of items that match this aggregation key
+     */
+    /**
+     * Response to OSDU query
+     * @typedef {Object} OsduQueryResults
+     * @property {OsduRecord[]} results - List of query result records
+     * @property {OsduAggregationItem[]|null} aggregations - List of aggregated records
+     * @property {number} totalCount - Total number of records matched by the query
+     * @property {string} [cursor] - Page marker to resume query at next page
+     */
+
+    /**
      * Get OSDU records that match the given query constraints
      * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
-     * @returns {Object} The API Response
+     * @returns {OsduQueryResults} The API Response
      */
     async query(query_params) {
         if (!query_params.offset) {
@@ -33,7 +48,7 @@ class OsduR2QueryService extends OsduR2BaseService {
      * Get OSDU records that match the given query constraints
      * - Allow specification of a cursor for paged queries
      * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
-     * @returns {Object} The API Response
+     * @returns {OsduQueryResults} The API Response
      */
     async queryWithPaging(query_params, cursor) {
         if (!query_params.limit) {
@@ -50,7 +65,7 @@ class OsduR2QueryService extends OsduR2BaseService {
      * - Will page internally and aggregate results until no more pages are found
      * - Note that this may make multiple network requests if multiple pages are found
      * @param {Object} query_params - Query parameters built using the [OsduQueryBuilder]{@link OsduQueryBuilder}
-     * @returns {Object} The API Response
+     * @returns {OsduQueryResults} The API Response
      */
     async queryAll(query_params) {
         var output = {

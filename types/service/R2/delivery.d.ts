@@ -15,10 +15,47 @@ declare class OsduR2DeliveryService extends OsduR2BaseService {
      */
     constructor(osdu_client: any, data_partition: string);
     /**
+     * Individual processed file
+     * @typedef {Object} ProcessedFile
+     * @property {string} signedUrl - The signed url to retrieve this file
+     * @property {string} unsignedUrl - The storage url for the file that does not have presigned permissions
+     * @property {string} kind - The kind for this file
+     */
+    /**
+     * Response to delivery of requested files
+     * @typedef {Object} SignedUrls
+     * @property {Object.<string,ProcessedFile>} processed - Dictionary of processed file
+     * @property {string[]} unprocessed - List of srns for the files that have not been processed
+     */
+    /**
      * Get signed urls for the data file underlying the specified OSDU File records
      * @param {string[]} srns - SRN identifiers of the files for which you wish to retrieve signed urls
-     * @returns {Object} The API Response
+     * @returns {SignedUrls} The API Response
      */
-    getSignedUrls(srns: string[]): any;
+    getSignedUrls(srns: string[]): {
+        /**
+         * - Dictionary of processed file
+         */
+        processed: {
+            [x: string]: {
+                /**
+                 * - The signed url to retrieve this file
+                 */
+                signedUrl: string;
+                /**
+                 * - The storage url for the file that does not have presigned permissions
+                 */
+                unsignedUrl: string;
+                /**
+                 * - The kind for this file
+                 */
+                kind: string;
+            };
+        };
+        /**
+         * - List of srns for the files that have not been processed
+         */
+        unprocessed: string[];
+    };
 }
 import OsduR2BaseService = require("./base");
