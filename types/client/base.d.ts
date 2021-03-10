@@ -44,8 +44,8 @@ declare class BaseOsduClient {
      */
     protected _makeRequest(data_partition: string, method: Function, args: {
         path: string;
-        body: any;
-        config: any;
+        body?: any;
+        config?: any;
     }, iteration?: number): Promise<any>;
     /**
      * Convenience method for invoking HTTP POST requests

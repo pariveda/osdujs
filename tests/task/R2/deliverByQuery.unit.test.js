@@ -14,55 +14,59 @@ describe("OsduR2Tasks.DeliverByQuery tests", function() {
         const dataPartition = `opendes`;
         var service = {
             QueryService: {
-                queryWithPaging: async (query_params, cursor) => {
-                    assert.strictEqual(query_params.kind, kind, `Must use correct kind on query params: ${query_params.kind} != ${kind}`);
-                    assert.strictEqual(query_params.query, `(data.ResourceID:\"${resourceID1}\" OR data.ResourceID:\"${resourceID2}\")`, `Must use correct query statement`);
-                    if (cursor) {
-                        return {
-                            results: [
-                                {
-                                    id: resourceID2,
-                                    kind,
-                                    data: {
-                                        ResourceID: resourceID2
+                V2: {
+                    queryWithPaging: async (query_params, cursor) => {
+                        assert.strictEqual(query_params.kind, kind, `Must use correct kind on query params: ${query_params.kind} != ${kind}`);
+                        assert.strictEqual(query_params.query, `(data.ResourceID:\"${resourceID1}\" OR data.ResourceID:\"${resourceID2}\")`, `Must use correct query statement`);
+                        if (cursor) {
+                            return {
+                                results: [
+                                    {
+                                        id: resourceID2,
+                                        kind,
+                                        data: {
+                                            ResourceID: resourceID2
+                                        }
                                     }
-                                }
-                            ],
-                            totalCount: 2,
-                            cursor: undefined
+                                ],
+                                totalCount: 2,
+                                cursor: undefined
+                            }
                         }
-                    }
-                    else {
-                        return {
-                            results: [
-                                {
-                                    id: resourceID1,
-                                    kind,
-                                    data: {
-                                        ResourceID: resourceID1
+                        else {
+                            return {
+                                results: [
+                                    {
+                                        id: resourceID1,
+                                        kind,
+                                        data: {
+                                            ResourceID: resourceID1
+                                        }
                                     }
-                                }
-                            ],
-                            totalCount: 2,
-                            cursor: "cursor_value"
+                                ],
+                                totalCount: 2,
+                                cursor: "cursor_value"
+                            }
                         }
                     }
                 }
             },
             DeliveryService: {
-                getSignedUrls: async (srns) => {
-                    const output = {
-                        unprocessed: [],
-                        processed: {}
-                    };
-                    srns.forEach((srn) => {
-                        output.processed[srn] = {
-                            signedUrl: "signed_url",
-                            unsignedUrl: "unsigned_url",
-                            kind: kind
+                V2: {
+                    getSignedUrls: async (srns) => {
+                        const output = {
+                            unprocessed: [],
+                            processed: {}
                         };
-                    });
-                    return output;
+                        srns.forEach((srn) => {
+                            output.processed[srn] = {
+                                signedUrl: "signed_url",
+                                unsignedUrl: "unsigned_url",
+                                kind: kind
+                            };
+                        });
+                        return output;
+                    }
                 }
             }
         }
@@ -99,41 +103,45 @@ describe("OsduR2Tasks.DeliverByQuery tests", function() {
         const cursorExpected = "cursor_value";
         var service = {
             QueryService: {
-                queryWithPaging: async (query_params, cursor) => {
-                    if (cursor) {
-                        throw new Error(errorMessage);
-                    }
-                    else {
-                        return {
-                            results: [
-                                {
-                                    id: resourceID1,
-                                    kind,
-                                    data: {
-                                        ResourceID: resourceID1
+                V2: {
+                    queryWithPaging: async (query_params, cursor) => {
+                        if (cursor) {
+                            throw new Error(errorMessage);
+                        }
+                        else {
+                            return {
+                                results: [
+                                    {
+                                        id: resourceID1,
+                                        kind,
+                                        data: {
+                                            ResourceID: resourceID1
+                                        }
                                     }
-                                }
-                            ],
-                            totalCount: 2,
-                            cursor: cursorExpected
+                                ],
+                                totalCount: 2,
+                                cursor: cursorExpected
+                            }
                         }
                     }
                 }
             },
             DeliveryService: {
-                getSignedUrls: async (srns) => {
-                    const output = {
-                        unprocessed: [],
-                        processed: {}
-                    };
-                    srns.forEach((srn) => {
-                        output.processed[srn] = {
-                            signedUrl: "signed_url",
-                            unsignedUrl: "unsigned_url",
-                            kind: kind
+                V2: {
+                    getSignedUrls: async (srns) => {
+                        const output = {
+                            unprocessed: [],
+                            processed: {}
                         };
-                    });
-                    return output;
+                        srns.forEach((srn) => {
+                            output.processed[srn] = {
+                                signedUrl: "signed_url",
+                                unsignedUrl: "unsigned_url",
+                                kind: kind
+                            };
+                        });
+                        return output;
+                    }
                 }
             }
         }
@@ -162,56 +170,60 @@ describe("OsduR2Tasks.DeliverByQuery tests", function() {
         const cursorExpected = "cursor_value";
         var service = {
             QueryService: {
-                queryWithPaging: async (query_params, cursor) => {
-                    if (cursor) {
-                        return {
-                            results: [
-                                {
-                                    id: resourceID2,
-                                    kind,
-                                    data: {
-                                        ResourceID: resourceID2
+                V2: {
+                    queryWithPaging: async (query_params, cursor) => {
+                        if (cursor) {
+                            return {
+                                results: [
+                                    {
+                                        id: resourceID2,
+                                        kind,
+                                        data: {
+                                            ResourceID: resourceID2
+                                        }
                                     }
-                                }
-                            ],
-                            totalCount: 2,
-                            cursor: undefined
+                                ],
+                                totalCount: 2,
+                                cursor: undefined
+                            }
                         }
-                    }
-                    else {
-                        return {
-                            results: [
-                                {
-                                    id: resourceID1,
-                                    kind,
-                                    data: {
-                                        ResourceID: resourceID1
+                        else {
+                            return {
+                                results: [
+                                    {
+                                        id: resourceID1,
+                                        kind,
+                                        data: {
+                                            ResourceID: resourceID1
+                                        }
                                     }
-                                }
-                            ],
-                            totalCount: 2,
-                            cursor: cursorExpected
+                                ],
+                                totalCount: 2,
+                                cursor: cursorExpected
+                            }
                         }
                     }
                 }
             },
             DeliveryService: {
-                getSignedUrls: async (srns) => {
-                    if (srns[0] == resourceID2) {
-                        throw new Error(errorMessage);
-                    }
-                    const output = {
-                        unprocessed: [],
-                        processed: {}
-                    };
-                    srns.forEach((srn) => {
-                        output.processed[srn] = {
-                            signedUrl: "signed_url",
-                            unsignedUrl: "unsigned_url",
-                            kind: kind
+                V2: {
+                    getSignedUrls: async (srns) => {
+                        if (srns[0] == resourceID2) {
+                            throw new Error(errorMessage);
+                        }
+                        const output = {
+                            unprocessed: [],
+                            processed: {}
                         };
-                    });
-                    return output;
+                        srns.forEach((srn) => {
+                            output.processed[srn] = {
+                                signedUrl: "signed_url",
+                                unsignedUrl: "unsigned_url",
+                                kind: kind
+                            };
+                        });
+                        return output;
+                    }
                 }
             }
         }

@@ -1,14 +1,14 @@
-const OsduR2BaseService = require('./base');
+const OsduBaseService = require('../base');
 
 /**
- * Class that provides named access to OSDU R2 Delivery endpoints
+ * Class that provides named access to OSDU V2 Delivery endpoints
  * - [Service Documentation]{@link https://community.opengroup.org/osdu/documentation/-/wikis/OSDU-(C)/Design-and-Implementation/Ingestion-and-Enrichment-Detail/R2-Delivery}
  * - [API Documentation]{@link https://community.opengroup.org/osdu/platform/system/delivery/-/blob/master/docs/api/delivery.yaml}
  * @class
  * @category Services
- * @subcategory R2
+ * @subcategory Delivery
  */
-class OsduR2DeliveryService extends OsduR2BaseService {
+class OsduV2DeliveryService extends OsduBaseService {
     /**
      * @constructor
      * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
@@ -28,4 +28,4 @@ class OsduR2DeliveryService extends OsduR2BaseService {
     }
 }
 
-module.exports = OsduR2DeliveryService;
+module.exports = OsduV2DeliveryService;

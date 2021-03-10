@@ -1,103 +1,67 @@
-const OsduR2BaseService = require('./base');
-
+export = OsduV2StorageService;
 /**
- * Class that provides named access to OSDU R2 Storage endpoints
+ * Class that provides named access to OSDU V2 Storage endpoints
  * - [Service Documentation]{@link https://community.opengroup.org/osdu/platform/system/storage/-/blob/master/docs/tutorial/StorageService.md}
  * - [API Documentation]{@link https://community.opengroup.org/osdu/platform/system/storage/-/blob/master/docs/api/storage_openapi.yaml}
  * @class
  * @category Services
- * @subcategory R2
+ * @subcategory Storage
  */
-class OsduR2StorageService extends OsduR2BaseService {
-    /**
-     * @constructor
-     * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
-     * @param {string} data_partition - The data partition against which requests will be made
-     */
-    constructor(osdu_client, data_partition) {
-        super(osdu_client, data_partition);
-    }
-
-    // Records
-    // TODO: Define response types
+declare class OsduV2StorageService extends OsduBaseService {
     /**
      * Get OSDU records for the specified ids
      * @param {string[]} record_ids - Record identifiers of the OSDU records to retrieve
      * @returns {Object} The API Response
      */
-    async getRecords(record_ids) {
-        return await this._client.post(`/api/storage/v2/query/records`, {
-            records: record_ids
-        }, this._dataPartition)
-    }
+    getRecords(record_ids: string[]): any;
     /**
      * Get OSDU records for the specified id
      * @param {string} record_id - Record identifier of the OSDU record to retrieve
      * @returns {Object} The API Response
      */
-    async getRecord(record_id) {
-        return await this._client.get(`/api/storage/v2/records/${record_id}`, this._dataPartition);
-    }
+    getRecord(record_id: string): any;
     /**
      * Get OSDU record versions for the specified id
      * @param {string} record_id - Record identifier of the OSDU record to retrieve version data
      * @returns {Object} The API Response
      */
-    async getRecordVersions(record_id) {
-        return await this._client.get(`/api/storage/v2/records/versions/${record_id}`, this._dataPartition);
-    }
+    getRecordVersions(record_id: string): any;
     /**
      * Get OSDU record for the specified id at the specified version
      * @param {string} record_id - Record identifier of the OSDU record to retrieve
      * @param {string} version - Version id to retrieve
      * @returns {Object} The API Response
      */
-    async getRecordVersion(record_id, version) {
-        return await this._client.get(`/records/${record_id}/${version}`, this._dataPartition);
-    }
+    getRecordVersion(record_id: string, version: string): any;
     /**
      * Upsert the provided records
      * @param {Object[]} records - List of JSON representations of the records to upsert
      * @returns {Object} The API Response
      */
-    async storeRecords(records) {
-        return await this._client.put(`/api/storage/v2/records`, records, this._dataPartition)
-    }
+    storeRecords(records: any[]): any;
     /**
      * Delete OSDU record
      * @param {string} record_id - Record identifier of the OSDU record to delete
      * @returns {Object} The API Response
      */
-    async deleteRecord(record_id) {
-        return await this._client.delete(`/api/storage/v2/records/${record_id}`, this._dataPartition);
-    }
-
-    // Manifest
+    deleteRecord(record_id: string): any;
     /**
      * Ingest a manifest containing linked records
      * @param {Object} manifest - JSON representation of the manifest to process and ingest
      * @returns {Object} The API Response
      */
-    async ingestManifest(manifest) {
-        return await this._client.post(`/api/storage/v2/manifest`, manifest, this._dataPartition);
-    }
-
-    // Schemas
+    ingestManifest(manifest: any): any;
     /**
      * Retrieve a list of all supported record kinds
      * @returns {Object} The API Response
      */
-    async queryAllKinds() {
-        return await this._client.get(`/api/storage/v2/query/kinds`, this._dataPartition);
-    }
+    queryAllKinds(): any;
     /**
      * Get OSDU schema for a given kind
      * @param {string} kind - Name of the kind to retrieve the schema
      * @returns {Object} The API Response
      */
-    async getSchema(kind) {
-        return await this._client.get(`/api/storage/v2/schemas/${kind}`, this._dataPartition);
-    }
+    getSchema(kind: string): any;
     /**
      * Create a new schema to register a new kind
      * @param {string} kind - Name of the new kind to create
@@ -105,17 +69,12 @@ class OsduR2StorageService extends OsduR2BaseService {
      * @param {Object} ext - JSON representation of the schema extensions
      * @returns {Object} The API Response
      */
-    async createSchema(kind, schema, ext) {
-        return await this._client.post(`/api/storage/v2/schemas`, { kind, schema, ext }, this._dataPartition);
-    }
+    createSchema(kind: string, schema: any, ext: any): any;
     /**
      * Delete a kind and it's associated schema
      * @param {string} kind - Name of the kind to delete
      * @returns {Object} The API Response
      */
-    async deleteSchema(kind) {
-        return await this._client.delete(`/api/storage/v2/schemas/${kind}`, this._dataPartition);
-    }
+    deleteSchema(kind: string): any;
 }
-
-module.exports = OsduR2StorageService;
+import OsduBaseService = require("../base");

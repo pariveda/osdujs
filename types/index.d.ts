@@ -3,12 +3,7 @@ declare const _exports: {
         UpdateByQuery: typeof import("./task/R2/updateByQuery");
         DeliverByQuery: typeof import("./task/R2/deliverByQuery");
     };
-    OsduR2DeliveryService: typeof import("./service/R2/delivery");
-    OsduR2EntitlementsService: typeof import("./service/R2/entitlements");
-    OsduR2LegalService: typeof import("./service/R2/legal");
-    OsduR2QueryService: typeof import("./service/R2/query");
-    OsduR2Service: typeof import("./service/R2/service");
-    OsduR2StorageService: typeof import("./service/R2/storage");
+    OsduService: typeof import("./service/service");
     OsduQueryBuilder: typeof import("./models/query/osduQueryBuilder");
     OsduQueryExpression: typeof import("./models/query/osduQueryExpression");
     AWSOsduClient: typeof import("./client/aws/aws");

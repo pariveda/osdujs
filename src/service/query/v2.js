@@ -1,14 +1,14 @@
-const OsduR2BaseService = require('./base');
+const OsduBaseService = require('../base');
 
 /**
- * Class that provides named access to OSDU R2 Query endpoints
+ * Class that provides named access to OSDU V2 Query endpoints
  * - [Service Documentation]{@link https://community.opengroup.org/osdu/platform/system/search-service/-/blob/master/docs/tutorial/SearchService.md}
  * - [API Documentation]{@link https://community.opengroup.org/osdu/platform/system/search-service/-/blob/master/docs/api/search_openapi.yaml}
  * @class
  * @category Services
- * @subcategory R2
+ * @subcategory Query
  */
-class OsduR2QueryService extends OsduR2BaseService {
+class OsduV2QueryService extends OsduBaseService {
     /**
      * @constructor
      * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
@@ -71,4 +71,4 @@ class OsduR2QueryService extends OsduR2BaseService {
     }
 }
 
-module.exports = OsduR2QueryService;
+module.exports = OsduV2QueryService;

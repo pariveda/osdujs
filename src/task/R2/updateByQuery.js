@@ -1,4 +1,4 @@
-const OsduR2BaseTask = require('./base');
+const OsduBaseTask = require('../base');
 const {
     OsduQueryBuilder
 } = require('../../models/query');
@@ -9,7 +9,7 @@ const {
  * @category Tasks
  * @subcategory R2
  */
-class OsduR2UpdateByQueryTask extends OsduR2BaseTask {
+class OsduR2UpdateByQueryTask extends OsduBaseTask {
     /**
      * @constructor
      * @param {OsduR2BaseService} osdu_service - An implementation of the OSDU service class to broker communication with the OSDU API services

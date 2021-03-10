@@ -5,13 +5,7 @@ export = OsduR2UpdateByQueryTask;
  * @category Tasks
  * @subcategory R2
  */
-declare class OsduR2UpdateByQueryTask extends OsduR2BaseTask {
-    /**
-     * @constructor
-     * @param {OsduR2BaseService} osdu_service - An implementation of the OSDU service class to broker communication with the OSDU API services
-     * @param {string} data_partition - The data partition against which requests will be made
-     */
-    constructor(osdu_service: any, data_partition: string);
+declare class OsduR2UpdateByQueryTask extends OsduBaseTask {
     _queryParams: any;
     /**
      * Set the query parameters to be used for batched query requests
@@ -32,6 +26,13 @@ declare class OsduR2UpdateByQueryTask extends OsduR2BaseTask {
      * @param {TransformFunction} transform_function - Function that accepts an OSDU record and the OSDU service and asynchronously returns the transformed record
      * @returns {Object} A summary of the performed task, including a list of the ids of transformed records `transformedRecords`, the total count of records for the query `totalCount`, the number of batches that succeeded `batches`, the last cursor used (if an error was encountered) `lastCursor`, and the error that was thrown (if encountered) `error`
      */
-    execute(transform_function: (osduRecord: any, OsduR2BaseService: any) => any): any;
+    execute(transform_function: TransformFunction): any;
 }
-import OsduR2BaseTask = require("./base");
+declare namespace OsduR2UpdateByQueryTask {
+    export { TransformFunction };
+}
+import OsduBaseTask = require("../base");
+/**
+ * Function that accepts an OSDU record and the OSDU service and asynchronously returns the transformed record
+ */
+type TransformFunction = (osduRecord: any, OsduR2BaseService: any) => any;

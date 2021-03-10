@@ -5,13 +5,7 @@ export = OsduR2DeliverByQueryTask;
  * @category Tasks
  * @subcategory R2
  */
-declare class OsduR2DeliverByQueryTask extends OsduR2BaseTask {
-    /**
-     * @constructor
-     * @param {OsduR2BaseService} osdu_service - An implementation of the OSDU service class to broker communication with the OSDU API services
-     * @param {string} data_partition - The data partition against which requests will be made
-     */
-    constructor(osdu_service: any, data_partition: string);
+declare class OsduR2DeliverByQueryTask extends OsduBaseTask {
     _queryParams: any;
     /**
      * Set the query parameters to be used for batched query requests. Query params must have a file kind
@@ -25,4 +19,4 @@ declare class OsduR2DeliverByQueryTask extends OsduR2BaseTask {
      */
     execute(): any;
 }
-import OsduR2BaseTask = require("./base");
+import OsduBaseTask = require("../base");
