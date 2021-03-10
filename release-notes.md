@@ -1,5 +1,11 @@
 # Release Notes
 
+## `2.0.0`
+
+**Release Date**: 2021-3-10
+
+Changed versioning structure of classes to be service version based rather than OSDU release version based.
+
 ## `1.0.3`
 
 **Release Date**: 2021-2-2

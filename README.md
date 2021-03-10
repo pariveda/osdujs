@@ -9,8 +9,8 @@ A simple node client/service for the [OSDU](https://community.opengroup.org/osdu
 ## Contents
 
 - [Service](#service)
-  * [OsduR2Service](#osdur2service)
-    + [Currently supported methods](#r2-currently-supported-methods)
+  * [OsduService](#osduservice)
+    + [Currently supported methods](#currently-supported-methods)
 - [Clients](#clients)
   * [SimpleOsduClient](#simpleosduclient)
   * [AwsOsduClient](#awsosduclient)
@@ -30,42 +30,46 @@ A simple node client/service for the [OSDU](https://community.opengroup.org/osdu
 
 Choose the service that matches your OSDU application instance version.
 
-### OsduR2Service
+### OsduService
 
-Service to encapsulate the OSDU R2 application endpoints. Provides
+Service to encapsulate the OSDU application endpoints. Provides
 named access to the below supported OSDU methods, all in an async
 manner.
 
-#### R2 currently supported methods
+#### Currently supported methods
 
-- [search](service/R2/query.js)
-  - query
-  - queryWithPaging
-  - queryAll
-- [storage](service/R2/storage.js)
-  - getRecords
-  - getRecord
-  - getRecordVersions
-  - getRecordVersion
-  - storeRecords
-  - deleteRecord
-  - ingestManifest
-  - queryAllKinds
-  - getSchema
-  - createSchema
-  - deleteSchema
-- [delivery](service/R2/delivery.js)
-  - getSignedUrls
-- [legal](service/R2/legal.js)
-  - listLegalTags
-  - getLegalTags
-  - validateLegalTags
-  - getLegalTag
-  - getLegalTagProperties
-  - createLegalTag
-  - updateLegalTag
-  - deleteLegalTag
-- [entitlements](service/R2/entitlements.js)
+- [search](src/service/query/index.js)
+  - [v2](src/service/query/v2.js)
+    - query
+    - queryWithPaging
+    - queryAll
+- [storage](src/service/storage/index.js)
+  - [v2](src/service/storage/v2.js)
+    - getRecords
+    - getRecord
+    - getRecordVersions
+    - getRecordVersion
+    - storeRecords
+    - deleteRecord
+    - ingestManifest
+    - queryAllKinds
+    - getSchema
+    - createSchema
+    - deleteSchema
+- [delivery](src/service/delivery/index.js)
+  - [v2](src/service/delivery/v2.js)
+    - getSignedUrls
+- [legal](src/service/legal/index.js)
+  - [v1](src/service/legal/v1.js)
+    - listLegalTags
+    - getLegalTags
+    - validateLegalTags
+    - getLegalTag
+    - getLegalTagProperties
+    - createLegalTag
+    - updateLegalTag
+    - deleteLegalTag
+- [entitlements](src/service/entitlements/index.js)
 
 ## Clients
 
@@ -191,24 +195,24 @@ var osduClient = new AWSOsduClient({
 });
 ```
 
-### Using the OsduR2Service
+### Using the OsduService
 
-Below are just a few usage examples using the OsduR2Service. See [integration and unit tests](tests) for more copmrehensive usage examples.
+Below are just a few usage examples using the OsduService. See [integration and unit tests](tests) for more copmrehensive usage examples.
 
 Instantiating the service is as simple as passing in the client and the data partition you wish to operate on. For
 more information regarding creating an OSDU client, please see [Instantiating the SimpleOsduClient](#instantiating-the-simpleosduclient) or [Instantiating the AwsOsduClient](#instantiating-the-awsosduclient)
 
 ```javascript
-const { OsduR2Service } = require('osdujs');
+const { OsduService } = require('osdujs');
 
 var client = createOSDUClient();
-var osduService = new OsduR2Service(client, 'opendes');
+var osduService = new OsduService(client, 'opendes');
 ```
 
 #### Search for records by query
 
 ```javascript
-var queryResults = await osduService.QueryService.query(
+var queryResults = await osduService.QueryService.V2.query(
     (new OsduQueryBuilder())
         .kind('opendes:osdu:*:*')
         .build()
@@ -223,7 +227,7 @@ For result sets larger than 1,000 records, use the query with paging method to p
 Initially:
 
 ```javascript
-var queryResults = await osduService.QueryService.queryWithPaging(
+var queryResults = await osduService.QueryService.V2.queryWithPaging(
     (new OsduQueryBuilder())
         .kind('opendes:osdu:*:*')
         .build()
@@ -235,7 +239,7 @@ With an existing cursor:
 
 ```javascript
 const cursor = "cursor";
-var queryResults = await osduService.QueryService.queryWithPaging(
+var queryResults = await osduService.QueryService.V2.queryWithPaging(
     (new OsduQueryBuilder())
         .kind('opendes:osdu:*:*')
         .build(),
@@ -249,7 +253,7 @@ var queryResults = await osduService.QueryService.queryWithPaging(
 For result sets larger than 1,000 records, use the query all method to pull all records.
 
 ```javascript
-var queryResults = await osduService.QueryService.queryAll(
+var queryResults = await osduService.QueryService.V2.queryAll(
     (new OsduQueryBuilder())
         .kind('opendes:osdu:*:*')
         .build()
@@ -261,7 +265,7 @@ var queryResults = await osduService.QueryService.queryAll(
 
 ```javascript
 const record_id = 'opendes:doc:123456789';
-var record = await osduService.StorageService.getRecord(record_id);
+var record = await osduService.StorageService.V2.getRecord(record_id);
 // { id: 'opendes:doc:123456789', kind: ..., data: {...}, acl: {...}, .... }
 ```
 
@@ -272,6 +276,6 @@ const fs = require('fs');
 const new_or_updated_record = JSON.parse(
     fs.readFileSync('./record-123.json').toString()
 );
-var record = await osduService.StorageService.storeRecords([new_or_updated_record]);
+var record = await osduService.StorageService.V2.storeRecords([new_or_updated_record]);
 // { recordCount: 1, recordIds: [...], skippedRecordIds: [] }
 ```
