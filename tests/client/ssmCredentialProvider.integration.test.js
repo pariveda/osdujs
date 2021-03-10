@@ -12,8 +12,8 @@ const createAWSOSDUClient = () => {
         aws_region: process.env.AWS_REGION, 
         aws_profile: process.env.AWS_PROFILE,
         credential_provider: new AWSOsduSSMCredentialProvider({
-            username_parameter: '/osdu/osdur3m1/admin-user', 
-            password_parameter: '/osdu/osdur3m1/admin-password',
+            username_parameter: '/osdu/osdur3m3/admin-user', 
+            password_parameter: '/osdu/osdur3m3/admin-password',
             aws_region: process.env.AWS_REGION,
             aws_profile: process.env.AWS_PROFILE
         })
