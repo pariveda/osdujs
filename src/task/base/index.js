@@ -5,12 +5,11 @@
  * @class
  * @abstract
  * @category Tasks
- * @subcategory R2
  */
-class OsduR2BaseTask {
+class OsduBaseTask {
     /**
      * @constructor
-     * @param {OsduR2BaseService} osdu_service - An implementation of the OSDU service class to broker communication with the OSDU API services
+     * @param {OsduBaseService} osdu_service - An implementation of the OSDU service class to broker communication with the OSDU API services
      * @param {string} data_partition - The data partition against which requests will be made
      */
     constructor(osdu_service, data_partition) {
@@ -22,4 +21,4 @@ class OsduR2BaseTask {
     }
 }
 
-module.exports = OsduR2BaseTask;
+module.exports = OsduBaseTask;

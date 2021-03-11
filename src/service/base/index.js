@@ -5,9 +5,8 @@
  * @class
  * @abstract
  * @category Services
- * @subcategory R2
  */
-class OsduR2BaseService {
+class OsduBaseService {
     /**
      * @constructor
      * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
@@ -22,4 +21,4 @@ class OsduR2BaseService {
     }
 }
 
-module.exports = OsduR2BaseService;
+module.exports = OsduBaseService;

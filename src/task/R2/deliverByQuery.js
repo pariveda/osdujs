@@ -1,4 +1,4 @@
-const OsduR2BaseTask = require('./base');
+const OsduBaseTask = require('../base');
 const {
     OsduQueryBuilder
 } = require('../../models/query');
@@ -9,7 +9,7 @@ const {
  * @category Tasks
  * @subcategory R2
  */
-class OsduR2DeliverByQueryTask extends OsduR2BaseTask {
+class OsduR2DeliverByQueryTask extends OsduBaseTask {
     /**
      * @constructor
      * @param {OsduR2BaseService} osdu_service - An implementation of the OSDU service class to broker communication with the OSDU API services
@@ -52,12 +52,12 @@ class OsduR2DeliverByQueryTask extends OsduR2BaseTask {
         try {
             do {
                 var srns = [];
-                response = await this._service.QueryService.queryWithPaging(this._queryParams, cursor);
+                response = await this._service.QueryService.V2.queryWithPaging(this._queryParams, cursor);
                 output.totalCount = response.totalCount;
                 for (let index = 0; index < response.results.length; index++) {
                     srns.push(response.results[index].data.ResourceID);
                 }
-                const deliveredRecords = await this._service.DeliveryService.getSignedUrls(srns);
+                const deliveredRecords = await this._service.DeliveryService.V2.getSignedUrls(srns);
                 cursor = response.cursor;
                 output.batches++;
                 output.deliveredRecords = Object.assign(output.deliveredRecords, deliveredRecords.processed);

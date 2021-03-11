@@ -1,3 +1,4 @@
 module.exports = {
-    ...require('./query')
+    ...require('./query'),
+    ...require('./schema')
 }

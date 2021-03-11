@@ -15,7 +15,7 @@ declare class AWSOsduSSMCredentialProvider extends AWSOsduBaseCredentialProvider
      */
     constructor(params: {
         aws_region: string;
-        aws_profile: string;
+        aws_profile?: string;
         username_parameter: string;
         password_parameter: string;
     });
