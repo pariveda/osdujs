@@ -70,6 +70,20 @@ manner.
     - updateLegalTag
     - deleteLegalTag
 - [entitlements](src/service/entitlements/index.js)
+- [dataset](src/service/dataset/index.js)
+  - [v1](src/service/dataset/v1.js)
+    - getDatasetRegistry
+    - getDatasetRegistries
+    - registerDatasets
+    - getStorageInstructions
+    - getRetrievalInstructions
+    - getMultipleRetrievalInstructions
+- [schema](src/service/schema/index.js)
+  - [v1](src/service/schema/v1.js)
+    - createSchema
+    - updateSchema
+    - listSchemasByFilter
+    - getSchema
 
 ## Clients
 

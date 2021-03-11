@@ -40,7 +40,7 @@ class OsduV1SchemaService extends OsduBaseService {
      * @param {Object} schemaInfo - The schema info including the schema identity that uniquely identifies the schema and the status of the schema
      * @returns {Object} The API Response
      */
-    async createSchema(schema, schemaInfo) {
+    async updateSchema(schema, schemaInfo) {
         var requestBody = {
             schema,
             schemaInfo

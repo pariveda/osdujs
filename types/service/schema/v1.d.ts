@@ -17,6 +17,14 @@ declare class OsduV1SchemaService extends OsduBaseService {
      */
     createSchema(schema: any, schemaInfo: any): any;
     /**
+     * Updates a schema in the schema repository
+     * The schema must be in DEVELOPMENT status
+     * @param {Object} schema - The schema to create
+     * @param {Object} schemaInfo - The schema info including the schema identity that uniquely identifies the schema and the status of the schema
+     * @returns {Object} The API Response
+     */
+    updateSchema(schema: any, schemaInfo: any): any;
+    /**
      * Find a schema in the schema repository
      * @param {String} query_params - Query parameters built using the [OsduSchemaQueryBuilder]{@link OsduSchemaQueryBuilder}
      * @returns {Object} The API Response
