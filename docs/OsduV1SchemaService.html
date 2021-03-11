@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OsduJS OsduQueryExpression</title>
+  <title>OsduJS OsduV1SchemaService</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -98,7 +98,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Class</p>
-                    <h1>OsduQueryExpression</h1>
+                    <h1>OsduV1SchemaService</h1>
                 </header>
                 
 
@@ -109,11 +109,12 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>OsduQueryExpression<span class="signature">(statement)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>OsduV1SchemaService<span class="signature">(osdu_client, data_partition)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Class to build OSDU query expressions from strings or by concatenating two other OSDU query expressions</p>
+            <div class="class-description"><p>Class that provides named access to OSDU V1 Schema endpoints</p>
 <ul>
-<li>Serves as a builder for the <a href="https://community.opengroup.org/osdu/documentation/-/wikis/Releases/R2.0/OSDU-Query-Syntax#text-queries">text queries</a> within the OSDU query syntax</li>
+<li><a href="https://community.opengroup.org/osdu/platform/system/schema-service/-/blob/master/docs/api/schema.yaml">Service Documentation</a></li>
+<li><a href="https://community.opengroup.org/osdu/platform/system/schema-service/-/blob/master/docs/api/schema.yaml">API Documentation</a></li>
 </ul></div>
         
     
@@ -133,25 +134,18 @@
 
 
     
-    <h4 class="name" id="OsduQueryExpression">
-        <a class="href-link" href="#OsduQueryExpression">#</a>
+    <h4 class="name" id="OsduV1SchemaService">
+        <a class="href-link" href="#OsduV1SchemaService">#</a>
         
         <span class="code-name">
             
-                new OsduQueryExpression<span class="signature">(statement)</span><span class="type-signature"></span>
+                new OsduV1SchemaService<span class="signature">(osdu_client, data_partition)</span><span class="type-signature"></span>
             
         </span>
     </h4>
     
 
     
-    
-    <div class="description">
-        <p>Constructor for free-form query expressions</p>
-<ul>
-<li>Often used for base expressions such as <code>data.ResourceID:\&quot;...\&quot;</code></li>
-</ul>
-    </div>
     
 
 
@@ -188,7 +182,32 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>statement</code></td>
+      <td class="name"><code>osdu_client</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="BaseOsduClient.html">BaseOsduClient</a></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>An implementation of the OSDU client class to broker communication with the OSDU API</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>data_partition</code></td>
   
 
   <td class="type">
@@ -204,7 +223,7 @@
 
   
 
-  <td class="description last"><p>A string statement representing a single boolean query statement</p></td>
+  <td class="description last"><p>The data partition against which requests will be made</p></td>
 </tr>
 
 
@@ -250,9 +269,9 @@
 
     
         <p class="tag-source">
-            <a href="models_query_osduQueryExpression.js.html" class="button">View Source</a>
+            <a href="service_schema_v1.js.html" class="button">View Source</a>
             <span>
-                <a href="models_query_osduQueryExpression.js.html">models/query/osduQueryExpression.js</a>, <a href="models_query_osduQueryExpression.js.html#line8">line 8</a>
+                <a href="service_schema_v1.js.html">service/schema/v1.js</a>, <a href="service_schema_v1.js.html#line11">line 11</a>
             </span>
         </p>
     
@@ -309,16 +328,16 @@
 
 
     
-    <h4 class="name" id=".FromOperator">
-        <a class="href-link" href="#.FromOperator">#</a>
+    <h4 class="name" id="createSchema">
+        <a class="href-link" href="#createSchema">#</a>
         
             
-                <span class='tag'>static</span>
+                <span class='tag'>async</span>
             
         
         <span class="code-name">
             
-                FromOperator<span class="signature">(boolean_operator, left_expression, right_expression)</span><span class="type-signature"> &rarr; {<a href="OsduQueryExpression.html">OsduQueryExpression</a>}</span>
+                createSchema<span class="signature">(schema, schemaInfo)</span><span class="type-signature"> &rarr; {Object}</span>
             
         </span>
     </h4>
@@ -327,7 +346,7 @@
     
     
     <div class="description">
-        <p>Builder method to simplify the concatenation of multiple query expressions while providing clear scoping boundaries</p>
+        <p>Adds a schema to the schema repository</p>
     </div>
     
 
@@ -365,13 +384,13 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>boolean_operator</code></td>
+      <td class="name"><code>schema</code></td>
   
 
   <td class="type">
   
       
-<span class="param-type">string</span>
+<span class="param-type">Object</span>
 
 
   
@@ -381,7 +400,7 @@
 
   
 
-  <td class="description last"><p>The concatenating operator. Accepts <code>&quot;AND&quot;</code> or <code>&quot;OR&quot;</code></p></td>
+  <td class="description last"><p>The schema to create</p></td>
 </tr>
 
 
@@ -390,13 +409,13 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>left_expression</code></td>
+      <td class="name"><code>schemaInfo</code></td>
   
 
   <td class="type">
   
       
-<span class="param-type"><a href="OsduQueryExpression.html">OsduQueryExpression</a></span>
+<span class="param-type">Object</span>
 
 
   
@@ -406,32 +425,7 @@
 
   
 
-  <td class="description last"><p>The query expression on the left hand side of the boolean operator</p></td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>right_expression</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type"><a href="OsduQueryExpression.html">OsduQueryExpression</a></span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>the query expression on the right hand side of the boolean operator</p></td>
+  <td class="description last"><p>The schema info including the schema identity that uniquely identifies the schema and the status of the schema</p></td>
 </tr>
 
 
@@ -477,9 +471,9 @@
 
     
         <p class="tag-source">
-            <a href="models_query_osduQueryExpression.js.html" class="button">View Source</a>
+            <a href="service_schema_v1.js.html" class="button">View Source</a>
             <span>
-                <a href="models_query_osduQueryExpression.js.html">models/query/osduQueryExpression.js</a>, <a href="models_query_osduQueryExpression.js.html#line29">line 29</a>
+                <a href="service_schema_v1.js.html">service/schema/v1.js</a>, <a href="service_schema_v1.js.html#line28">line 28</a>
             </span>
         </p>
     
@@ -510,13 +504,13 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>The resulting compound query expression generated by concatenating the provided query expressions</p></div>
+    <div class='param-desc column is-7'><p>The API Response</p></div>
     
     
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
         
-<span class="param-type"><a href="OsduQueryExpression.html">OsduQueryExpression</a></span>
+<span class="param-type">Object</span>
 
 
     </div>
@@ -536,12 +530,16 @@
 
 
     
-    <h4 class="name" id="toString">
-        <a class="href-link" href="#toString">#</a>
+    <h4 class="name" id="getSchema">
+        <a class="href-link" href="#getSchema">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                toString<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+                getSchema<span class="signature">(schemaId)</span><span class="type-signature"> &rarr; {Object}</span>
             
         </span>
     </h4>
@@ -550,7 +548,7 @@
     
     
     <div class="description">
-        <p>Stringification method used to convert the expression to a string when formulating the API query statement</p>
+        <p>Get a schema in the schema repository</p>
     </div>
     
 
@@ -561,6 +559,57 @@
 
 
 
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>schemaId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">String</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The system id of the schema</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -599,9 +648,9 @@
 
     
         <p class="tag-source">
-            <a href="models_query_osduQueryExpression.js.html" class="button">View Source</a>
+            <a href="service_schema_v1.js.html" class="button">View Source</a>
             <span>
-                <a href="models_query_osduQueryExpression.js.html">models/query/osduQueryExpression.js</a>, <a href="models_query_osduQueryExpression.js.html#line51">line 51</a>
+                <a href="service_schema_v1.js.html">service/schema/v1.js</a>, <a href="service_schema_v1.js.html#line69">line 69</a>
             </span>
         </p>
     
@@ -632,13 +681,393 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>The string representation of the query statement</p></div>
+    <div class='param-desc column is-7'><p>The API Response</p></div>
     
     
     <div class='column is-5 has-text-left'>
         <label>Type: </label>
         
-<span class="param-type">string</span>
+<span class="param-type">Object</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="listSchemasByFilter">
+        <a class="href-link" href="#listSchemasByFilter">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                listSchemasByFilter<span class="signature">(query_params)</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Find a schema in the schema repository</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>query_params</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">String</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Query parameters built using the <a href="OsduSchemaQueryBuilder.html">OsduSchemaQueryBuilder</a></p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="service_schema_v1.js.html" class="button">View Source</a>
+            <span>
+                <a href="service_schema_v1.js.html">service/schema/v1.js</a>, <a href="service_schema_v1.js.html#line56">line 56</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The API Response</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Object</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="updateSchema">
+        <a class="href-link" href="#updateSchema">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                updateSchema<span class="signature">(schema, schemaInfo)</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Updates a schema in the schema repository
+The schema must be in DEVELOPMENT status</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>schema</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The schema to create</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>schemaInfo</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The schema info including the schema identity that uniquely identifies the schema and the status of the schema</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="service_schema_v1.js.html" class="button">View Source</a>
+            <span>
+                <a href="service_schema_v1.js.html">service/schema/v1.js</a>, <a href="service_schema_v1.js.html#line43">line 43</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The API Response</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Object</span>
 
 
     </div>

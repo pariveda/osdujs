@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OsduJS AWSOsduSSMCredentialProvider</title>
+  <title>OsduJS models/schema/osduSchemaQueryBuilder.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,515 +99,188 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Class</p>
-                    <h1>AWSOsduSSMCredentialProvider</h1>
+                    <p>Source</p>
+                    <h1>models/schema/osduSchemaQueryBuilder.js</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
-    
-        <h2><span class="attribs"><span class="type-signature"></span></span>AWSOsduSSMCredentialProvider<span class="signature">(params)</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Credenial provider class that provides Cognito username and password from AWS SSM parameters</p></div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
-
-
-    
-    <h4 class="name" id="AWSOsduSSMCredentialProvider">
-        <a class="href-link" href="#AWSOsduSSMCredentialProvider">#</a>
-        
-        <span class="code-name">
-            
-                new AWSOsduSSMCredentialProvider<span class="signature">(params)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-            <th>Attributes</th>
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>params</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Object</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last"><p>AWS configuration and SSM parameters</p></td>
-</tr>
-
-  
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>aws_region</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last"><p>The AWS region in which the OSDU application is deployed</p></td>
-</tr>
-
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>aws_profile</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last"><p>The AWS credential profile to use when making requests to SSM (typically only for local development)</p></td>
-</tr>
-
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>username_parameter</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last"><p>SSM parameter identifier where the Cognito username is stored</p></td>
-</tr>
-
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>password_parameter</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last"><p>SSM parameter identifier where the Cognito password is stored</p></td>
-</tr>
-
-  
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="client_aws_ssmCredentialProvider.js.html" class="button">View Source</a>
-            <span>
-                <a href="client_aws_ssmCredentialProvider.js.html">client/aws/ssmCredentialProvider.js</a>, <a href="client_aws_ssmCredentialProvider.js.html#line10">line 10</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class='vertical-section'>
-            <h1>Methods</h1>
-            <div class="members">
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="GetCredentials">
-        <a class="href-link" href="#GetCredentials">#</a>
-        
-        <span class="code-name">
-            
-                GetCredentials<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Object>|string|string}</span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Fetch credentials from SSM and serve dynamically</p>
-<ul>
-<li>Configures AWS SDK to use provided credentials for local development or automatic credentials for hosted applications</li>
-<li>Brokers communication with AWS SSM to retrieve Username/Password parameters</li>
-</ul>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="client_aws_ssmCredentialProvider.js.html" class="button">View Source</a>
-            <span>
-                <a href="client_aws_ssmCredentialProvider.js.html">client/aws/ssmCredentialProvider.js</a>, <a href="client_aws_ssmCredentialProvider.js.html#line34">line 34</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'><p>credentials - Promise resolving with Cognito username and password</p></div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type">Promise.&lt;Object></span>
-
-
-    </div>
-    
-</div>
-
-                
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'><p>credentials.username - Cognito username</p></div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type">string</span>
-
-
-    </div>
-    
-</div>
-
-                
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'><p>credentials.password - Cognito password</p></div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type">string</span>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-</div>
-            
-            </div>
-        </div>
     
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Class to build OSDU schema query bodies with friendly names for each available option
+ * - Note that querys built with this builder must at minimum specify the [kind]{@link OsduQueryBuilder#kind}
+ * 
+ * @class
+ * @category Models
+ * @subcategory Schema
+ */
+class OsduSchemaQueryBuilder {
+    /** @constructor */
+    constructor() {
+    }
+
+    // Setters
+    /**
+     * Pass an optional string to search for a specific authority
+     * - Accepts wildcards `*`
+     * @param {string} authority - The OSDU authority with which to filter the search
+     */
+    authority(authority) {
+        this._authority = authority;
+        return this;
+    }
+
+    /**
+     * Pass an optional string to search for a specific source
+     * - Accepts wildcards `*`
+     * @param {string} source - The OSDU source with which to filter the search
+     */
+    source(source) {
+        this._source = source;
+        return this;
+    }
+
+    /**
+     * Pass an optional string to search for a specific entityType
+     * - Accepts wildcards `*`
+     * @param {string} entityType - The OSDU entityType with which to filter the search
+     */
+    entityType(entityType) {
+        this._entityType = entityType;
+        return this;
+    }
+
+    /**
+     * Pass an optional string to search for a specific schemaVersionMajor
+     * - Accepts wildcards `*`
+     * @param {string|number} schemaVersionMajor - The OSDU schemaVersionMajor with which to filter the search
+     */
+    schemaVersionMajor(schemaVersionMajor) {
+        this._schemaVersionMajor = schemaVersionMajor;
+        return this;
+    }
+
+    /**
+     * Pass an optional string to search for a specific schemaVersionMinor
+     * - Accepts wildcards `*`
+     * @param {string|number} schemaVersionMinor - The OSDU schemaVersionMinor with which to filter the search
+     */
+    schemaVersionMinor(schemaVersionMinor) {
+        this._schemaVersionMinor = schemaVersionMinor;
+        return this;
+    }
+
+    /**
+     * The schema status specification
+     * - Accepts only valid status `PUBLISHED`, `DEVELOPMENT`, or `OBSOLETE`
+     * @param {('PUBLISHED'|'DEVELOPMENT'|'OBSOLETE')} status - The OSDU status with which to filter the search
+     */
+    status(status) {
+        if (![
+            "PUBLISHED",
+            "DEVELOPMENT",
+            "OBSOLETE"
+        ].contains(status)) {
+            throw new Error(`Invalid status type ${status} in Osdu Schema Query Builder`);
+        }
+        this._status = status;
+        return this;
+    }
+
+    /**
+     * The scope or schema visibility specification
+     * - Accepts only valid status `INTERNAL` or `SHARED`
+     * @param {('INTERNAL'|'SHARED')} status - The OSDU scope with which to filter the search
+     */
+    scope(scope) {
+        if (![
+            "SHARED",
+            "INTERNAL"
+        ].contains(scope)) {
+            throw new Error(`Invalid scope type ${scope} in Osdu Schema Query Builder`);
+        }
+        this._scope = scope;
+        return this;
+    }
+
+    /**
+     * If True, only return the latest version
+     * @param {boolean} latestVersion - Whether to retrieve only the latest version
+     */
+    latestVersion(latestVersion) {
+        this._latestVersion = !!latestVersion ? "True" : "False";
+        return this;
+    }
+
+    /**
+     * Maximum number of schema records to return
+     * @param {number} limit - The integer number of records to return
+     */
+    limit(limit) {
+        this._limit = limit;
+        return this;
+    }
+
+    /**
+     * Number of records to skip for pagination
+     * @param {number} offset - The integer number of records to skip
+     */
+    offset(offset) {
+        this._offset = offset;
+        return this;
+    }
+
+    // Build
+    /**
+     * Construct the query request query string based on the attributes set
+     * @returns {string} The query string that is passed to the schema query request
+     */
+    build() {
+        var queryString = "?";
+
+        if (this._authority) {
+            queryString += `&amp;authority=${this._authority}`;
+        }
+        if (this._source) {
+            queryString += `&amp;source=${this._source}`;
+        }
+        if (this._entityType) {
+            queryString += `&amp;entityType=${this._entityType}`;
+        }
+        if (this._schemaVersionMajor) {
+            queryString += `&amp;schemaVersionMajor=${this._schemaVersionMajor}`;
+        }
+        if (this._schemaVersionMinor) {
+            queryString += `&amp;schemaVersionMinor=${this._schemaVersionMinor}`;
+        }
+        if (this._status) {
+            queryString += `&amp;status=${this._status}`;
+        }
+        if (this._scope) {
+            queryString += `&amp;scope=${this._scope}`;
+        }
+        if (this._latestVersion) {
+            queryString += `&amp;latestVersion=${this._latestVersion}`;
+        }
+        if (this._limit) {
+            queryString += `&amp;limit=${this._limit}`;
+        }
+        if (this._offset) {
+            queryString += `&amp;offset=${this._offset}`;
+        }
+
+        queryString = queryString.substr(0, queryString.count-1);
+
+        return queryString;
+    }
+}
+
+module.exports = OsduSchemaQueryBuilder;</code></pre>
+        </article>
+    </section>
 
 
 

@@ -92,7 +92,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3><a href="global.html">Global</a></h3></div><div class="category"><h2>Clients</h2><h3>Classes / AWS</h3><ul><li><a href="AWSOsduBaseCredentialProvider.html">AWSOsduBaseCredentialProvider</a></li><li><a href="AWSOsduClient.html">AWSOsduClient</a></li><li><a href="AWSOsduSimpleCredentialProvider.html">AWSOsduSimpleCredentialProvider</a></li><li><a href="AWSOsduSSMCredentialProvider.html">AWSOsduSSMCredentialProvider</a></li></ul><h3>Classes</h3><ul><li><a href="BaseOsduClient.html">BaseOsduClient</a></li></ul><h3>Classes / Simple</h3><ul><li><a href="SimpleOsduClient.html">SimpleOsduClient</a></li></ul></div><div class="category"><h2>Models</h2><h3>Classes / Query</h3><ul><li><a href="OsduQueryBuilder.html">OsduQueryBuilder</a></li><li><a href="OsduQueryExpression.html">OsduQueryExpression</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes / R2</h3><ul><li><a href="OsduR2BaseService.html">OsduR2BaseService</a></li><li><a href="OsduR2DeliveryService.html">OsduR2DeliveryService</a></li><li><a href="OsduR2EntitlementsService.html">OsduR2EntitlementsService</a></li><li><a href="OsduR2LegalService.html">OsduR2LegalService</a></li><li><a href="OsduR2QueryService.html">OsduR2QueryService</a></li><li><a href="OsduR2Service.html">OsduR2Service</a></li><li><a href="OsduR2StorageService.html">OsduR2StorageService</a></li></ul></div><div class="category"><h2>Tasks</h2><h3>Classes / R2</h3><ul><li><a href="OsduR2BaseTask.html">OsduR2BaseTask</a></li><li><a href="OsduR2DeliverByQueryTask.html">OsduR2DeliverByQueryTask</a></li><li><a href="OsduR2UpdateByQueryTask.html">OsduR2UpdateByQueryTask</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3><a href="global.html">Global</a></h3></div><div class="category"><h2>Clients</h2><h3>Classes / AWS</h3><ul><li><a href="AWSOsduBaseCredentialProvider.html">AWSOsduBaseCredentialProvider</a></li><li><a href="AWSOsduClient.html">AWSOsduClient</a></li><li><a href="AWSOsduSimpleCredentialProvider.html">AWSOsduSimpleCredentialProvider</a></li><li><a href="AWSOsduSSMCredentialProvider.html">AWSOsduSSMCredentialProvider</a></li></ul><h3>Classes</h3><ul><li><a href="BaseOsduClient.html">BaseOsduClient</a></li></ul><h3>Classes / Simple</h3><ul><li><a href="SimpleOsduClient.html">SimpleOsduClient</a></li></ul></div><div class="category"><h2>Models</h2><h3>Classes / Query</h3><ul><li><a href="OsduQueryBuilder.html">OsduQueryBuilder</a></li><li><a href="OsduQueryExpression.html">OsduQueryExpression</a></li></ul><h3>Classes / Schema</h3><ul><li><a href="OsduSchemaQueryBuilder.html">OsduSchemaQueryBuilder</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="OsduBaseService.html">OsduBaseService</a></li><li><a href="OsduService.html">OsduService</a></li></ul><h3>Classes / Dataset</h3><ul><li><a href="OsduDatasetService.html">OsduDatasetService</a></li><li><a href="OsduV1DatasetService.html">OsduV1DatasetService</a></li></ul><h3>Classes / Delivery</h3><ul><li><a href="OsduDeliveryService.html">OsduDeliveryService</a></li><li><a href="OsduV2DeliveryService.html">OsduV2DeliveryService</a></li></ul><h3>Classes / Entitlements</h3><ul><li><a href="OsduEntitlementsService.html">OsduEntitlementsService</a></li></ul><h3>Classes / Legal</h3><ul><li><a href="OsduLegalService.html">OsduLegalService</a></li><li><a href="OsduV1LegalService.html">OsduV1LegalService</a></li></ul><h3>Classes / Query</h3><ul><li><a href="OsduQueryService.html">OsduQueryService</a></li><li><a href="OsduV2QueryService.html">OsduV2QueryService</a></li></ul><h3>Classes / Schema</h3><ul><li><a href="OsduSchemaService.html">OsduSchemaService</a></li><li><a href="OsduV1SchemaService.html">OsduV1SchemaService</a></li></ul><h3>Classes / Storage</h3><ul><li><a href="OsduStorageService.html">OsduStorageService</a></li><li><a href="OsduV2StorageService.html">OsduV2StorageService</a></li></ul></div><div class="category"><h2>Tasks</h2><h3>Classes</h3><ul><li><a href="OsduBaseTask.html">OsduBaseTask</a></li></ul><h3>Classes / R2</h3><ul><li><a href="OsduR2DeliverByQueryTask.html">OsduR2DeliverByQueryTask</a></li><li><a href="OsduR2UpdateByQueryTask.html">OsduR2UpdateByQueryTask</a></li></ul></div>
                 
             </nav>
         </div>
@@ -109,7 +109,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const OsduR2BaseTask = require('./base');
+            <pre class="prettyprint source linenums"><code>const OsduBaseTask = require('../base');
 const {
     OsduQueryBuilder
 } = require('../../models/query');
@@ -120,7 +120,7 @@ const {
  * @category Tasks
  * @subcategory R2
  */
-class OsduR2DeliverByQueryTask extends OsduR2BaseTask {
+class OsduR2DeliverByQueryTask extends OsduBaseTask {
     /**
      * @constructor
      * @param {OsduR2BaseService} osdu_service - An implementation of the OSDU service class to broker communication with the OSDU API services
@@ -163,12 +163,12 @@ class OsduR2DeliverByQueryTask extends OsduR2BaseTask {
         try {
             do {
                 var srns = [];
-                response = await this._service.QueryService.queryWithPaging(this._queryParams, cursor);
+                response = await this._service.QueryService.V2.queryWithPaging(this._queryParams, cursor);
                 output.totalCount = response.totalCount;
                 for (let index = 0; index &lt; response.results.length; index++) {
                     srns.push(response.results[index].data.ResourceID);
                 }
-                const deliveredRecords = await this._service.DeliveryService.getSignedUrls(srns);
+                const deliveredRecords = await this._service.DeliveryService.V2.getSignedUrls(srns);
                 cursor = response.cursor;
                 output.batches++;
                 output.deliveredRecords = Object.assign(output.deliveredRecords, deliveredRecords.processed);

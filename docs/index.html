@@ -90,7 +90,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3><a href="global.html">Global</a></h3></div><div class="category"><h2>Clients</h2><h3>Classes / AWS</h3><ul><li><a href="AWSOsduBaseCredentialProvider.html">AWSOsduBaseCredentialProvider</a></li><li><a href="AWSOsduClient.html">AWSOsduClient</a></li><li><a href="AWSOsduSimpleCredentialProvider.html">AWSOsduSimpleCredentialProvider</a></li><li><a href="AWSOsduSSMCredentialProvider.html">AWSOsduSSMCredentialProvider</a></li></ul><h3>Classes</h3><ul><li><a href="BaseOsduClient.html">BaseOsduClient</a></li></ul><h3>Classes / Simple</h3><ul><li><a href="SimpleOsduClient.html">SimpleOsduClient</a></li></ul></div><div class="category"><h2>Models</h2><h3>Classes / Query</h3><ul><li><a href="OsduQueryBuilder.html">OsduQueryBuilder</a></li><li><a href="OsduQueryExpression.html">OsduQueryExpression</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes / R2</h3><ul><li><a href="OsduR2BaseService.html">OsduR2BaseService</a></li><li><a href="OsduR2DeliveryService.html">OsduR2DeliveryService</a></li><li><a href="OsduR2EntitlementsService.html">OsduR2EntitlementsService</a></li><li><a href="OsduR2LegalService.html">OsduR2LegalService</a></li><li><a href="OsduR2QueryService.html">OsduR2QueryService</a></li><li><a href="OsduR2Service.html">OsduR2Service</a></li><li><a href="OsduR2StorageService.html">OsduR2StorageService</a></li></ul></div><div class="category"><h2>Tasks</h2><h3>Classes / R2</h3><ul><li><a href="OsduR2BaseTask.html">OsduR2BaseTask</a></li><li><a href="OsduR2DeliverByQueryTask.html">OsduR2DeliverByQueryTask</a></li><li><a href="OsduR2UpdateByQueryTask.html">OsduR2UpdateByQueryTask</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3><a href="global.html">Global</a></h3></div><div class="category"><h2>Clients</h2><h3>Classes / AWS</h3><ul><li><a href="AWSOsduBaseCredentialProvider.html">AWSOsduBaseCredentialProvider</a></li><li><a href="AWSOsduClient.html">AWSOsduClient</a></li><li><a href="AWSOsduSimpleCredentialProvider.html">AWSOsduSimpleCredentialProvider</a></li><li><a href="AWSOsduSSMCredentialProvider.html">AWSOsduSSMCredentialProvider</a></li></ul><h3>Classes</h3><ul><li><a href="BaseOsduClient.html">BaseOsduClient</a></li></ul><h3>Classes / Simple</h3><ul><li><a href="SimpleOsduClient.html">SimpleOsduClient</a></li></ul></div><div class="category"><h2>Models</h2><h3>Classes / Query</h3><ul><li><a href="OsduQueryBuilder.html">OsduQueryBuilder</a></li><li><a href="OsduQueryExpression.html">OsduQueryExpression</a></li></ul><h3>Classes / Schema</h3><ul><li><a href="OsduSchemaQueryBuilder.html">OsduSchemaQueryBuilder</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="OsduBaseService.html">OsduBaseService</a></li><li><a href="OsduService.html">OsduService</a></li></ul><h3>Classes / Dataset</h3><ul><li><a href="OsduDatasetService.html">OsduDatasetService</a></li><li><a href="OsduV1DatasetService.html">OsduV1DatasetService</a></li></ul><h3>Classes / Delivery</h3><ul><li><a href="OsduDeliveryService.html">OsduDeliveryService</a></li><li><a href="OsduV2DeliveryService.html">OsduV2DeliveryService</a></li></ul><h3>Classes / Entitlements</h3><ul><li><a href="OsduEntitlementsService.html">OsduEntitlementsService</a></li></ul><h3>Classes / Legal</h3><ul><li><a href="OsduLegalService.html">OsduLegalService</a></li><li><a href="OsduV1LegalService.html">OsduV1LegalService</a></li></ul><h3>Classes / Query</h3><ul><li><a href="OsduQueryService.html">OsduQueryService</a></li><li><a href="OsduV2QueryService.html">OsduV2QueryService</a></li></ul><h3>Classes / Schema</h3><ul><li><a href="OsduSchemaService.html">OsduSchemaService</a></li><li><a href="OsduV1SchemaService.html">OsduV1SchemaService</a></li></ul><h3>Classes / Storage</h3><ul><li><a href="OsduStorageService.html">OsduStorageService</a></li><li><a href="OsduV2StorageService.html">OsduV2StorageService</a></li></ul></div><div class="category"><h2>Tasks</h2><h3>Classes</h3><ul><li><a href="OsduBaseTask.html">OsduBaseTask</a></li></ul><h3>Classes / R2</h3><ul><li><a href="OsduR2DeliverByQueryTask.html">OsduR2DeliverByQueryTask</a></li><li><a href="OsduR2UpdateByQueryTask.html">OsduR2UpdateByQueryTask</a></li></ul></div>
                 
             </nav>
         </div>
@@ -134,9 +134,9 @@
 <ul>
 <li><a href="#service">Service</a>
 <ul>
-<li><a href="#osdur2service">OsduR2Service</a>
+<li><a href="#osduservice">OsduService</a>
 <ul>
-<li><a href="#r2-currently-supported-methods">Currently supported methods</a></li>
+<li><a href="#currently-supported-methods">Currently supported methods</a></li>
 </ul>
 </li>
 </ul>
@@ -167,20 +167,26 @@
 </ul>
 <h2 id="service">Service</h2>
 <p>Choose the service that matches your OSDU application instance version.</p>
-<h3 id="osdur2service">OsduR2Service</h3>
-<p>Service to encapsulate the OSDU R2 application endpoints. Provides
+<h3 id="osduservice">OsduService</h3>
+<p>Service to encapsulate the OSDU application endpoints. Provides
 named access to the below supported OSDU methods, all in an async
 manner.</p>
-<h4 id="r2-currently-supported-methods">R2 currently supported methods</h4>
+<h4 id="currently-supported-methods">Currently supported methods</h4>
 <ul>
-<li><a href="service/R2/query.js">search</a>
+<li><a href="src/service/query/index.js">search</a>
+<ul>
+<li><a href="src/service/query/v2.js">v2</a>
 <ul>
 <li>query</li>
 <li>queryWithPaging</li>
 <li>queryAll</li>
 </ul>
 </li>
-<li><a href="service/R2/storage.js">storage</a>
+</ul>
+</li>
+<li><a href="src/service/storage/index.js">storage</a>
+<ul>
+<li><a href="src/service/storage/v2.js">v2</a>
 <ul>
 <li>getRecords</li>
 <li>getRecord</li>
@@ -195,12 +201,20 @@ manner.</p>
 <li>deleteSchema</li>
 </ul>
 </li>
-<li><a href="service/R2/delivery.js">delivery</a>
+</ul>
+</li>
+<li><a href="src/service/delivery/index.js">delivery</a>
+<ul>
+<li><a href="src/service/delivery/v2.js">v2</a>
 <ul>
 <li>getSignedUrls</li>
 </ul>
 </li>
-<li><a href="service/R2/legal.js">legal</a>
+</ul>
+</li>
+<li><a href="src/service/legal/index.js">legal</a>
+<ul>
+<li><a href="src/service/legal/v1.js">v1</a>
 <ul>
 <li>listLegalTags</li>
 <li>getLegalTags</li>
@@ -212,7 +226,35 @@ manner.</p>
 <li>deleteLegalTag</li>
 </ul>
 </li>
-<li><a href="service/R2/entitlements.js">entitlements</a></li>
+</ul>
+</li>
+<li><a href="src/service/entitlements/index.js">entitlements</a></li>
+<li><a href="src/service/dataset/index.js">dataset</a>
+<ul>
+<li><a href="src/service/dataset/v1.js">v1</a>
+<ul>
+<li>getDatasetRegistry</li>
+<li>getDatasetRegistries</li>
+<li>registerDatasets</li>
+<li>getStorageInstructions</li>
+<li>getRetrievalInstructions</li>
+<li>getMultipleRetrievalInstructions</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="src/service/schema/index.js">schema</a>
+<ul>
+<li><a href="src/service/schema/v1.js">v1</a>
+<ul>
+<li>createSchema</li>
+<li>updateSchema</li>
+<li>listSchemasByFilter</li>
+<li>getSchema</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="clients">Clients</h2>
 <p>Choose the client that best meets your needs. The same methods are all supported for each.</p>
@@ -308,17 +350,17 @@ var osduClient = new AWSOsduClient({
     })
 });
 </code></pre>
-<h3 id="using-the-osdur2service">Using the OsduR2Service</h3>
-<p>Below are just a few usage examples using the OsduR2Service. See <a href="tests">integration and unit tests</a> for more copmrehensive usage examples.</p>
+<h3 id="using-the-osduservice">Using the OsduService</h3>
+<p>Below are just a few usage examples using the OsduService. See <a href="tests">integration and unit tests</a> for more copmrehensive usage examples.</p>
 <p>Instantiating the service is as simple as passing in the client and the data partition you wish to operate on. For
 more information regarding creating an OSDU client, please see <a href="#instantiating-the-simpleosduclient">Instantiating the SimpleOsduClient</a> or <a href="#instantiating-the-awsosduclient">Instantiating the AwsOsduClient</a></p>
-<pre class="prettyprint source lang-javascript"><code>const { OsduR2Service } = require('osdujs');
+<pre class="prettyprint source lang-javascript"><code>const { OsduService } = require('osdujs');
 
 var client = createOSDUClient();
-var osduService = new OsduR2Service(client, 'opendes');
+var osduService = new OsduService(client, 'opendes');
 </code></pre>
 <h4 id="search-for-records-by-query">Search for records by query</h4>
-<pre class="prettyprint source lang-javascript"><code>var queryResults = await osduService.QueryService.query(
+<pre class="prettyprint source lang-javascript"><code>var queryResults = await osduService.QueryService.V2.query(
     (new OsduQueryBuilder())
         .kind('opendes:osdu:*:*')
         .build()
@@ -328,7 +370,7 @@ var osduService = new OsduR2Service(client, 'opendes');
 <h4 id="search-with-paging">Search with paging</h4>
 <p>For result sets larger than 1,000 records, use the query with paging method to pull a page with an iterator (cursor).</p>
 <p>Initially:</p>
-<pre class="prettyprint source lang-javascript"><code>var queryResults = await osduService.QueryService.queryWithPaging(
+<pre class="prettyprint source lang-javascript"><code>var queryResults = await osduService.QueryService.V2.queryWithPaging(
     (new OsduQueryBuilder())
         .kind('opendes:osdu:*:*')
         .build()
@@ -337,7 +379,7 @@ var osduService = new OsduR2Service(client, 'opendes');
 </code></pre>
 <p>With an existing cursor:</p>
 <pre class="prettyprint source lang-javascript"><code>const cursor = &quot;cursor&quot;;
-var queryResults = await osduService.QueryService.queryWithPaging(
+var queryResults = await osduService.QueryService.V2.queryWithPaging(
     (new OsduQueryBuilder())
         .kind('opendes:osdu:*:*')
         .build(),
@@ -347,7 +389,7 @@ var queryResults = await osduService.QueryService.queryWithPaging(
 </code></pre>
 <h4 id="search-for-all">Search for all</h4>
 <p>For result sets larger than 1,000 records, use the query all method to pull all records.</p>
-<pre class="prettyprint source lang-javascript"><code>var queryResults = await osduService.QueryService.queryAll(
+<pre class="prettyprint source lang-javascript"><code>var queryResults = await osduService.QueryService.V2.queryAll(
     (new OsduQueryBuilder())
         .kind('opendes:osdu:*:*')
         .build()
@@ -356,7 +398,7 @@ var queryResults = await osduService.QueryService.queryWithPaging(
 </code></pre>
 <h4 id="get-a-record">Get a record</h4>
 <pre class="prettyprint source lang-javascript"><code>const record_id = 'opendes:doc:123456789';
-var record = await osduService.StorageService.getRecord(record_id);
+var record = await osduService.StorageService.V2.getRecord(record_id);
 // { id: 'opendes:doc:123456789', kind: ..., data: {...}, acl: {...}, .... }
 </code></pre>
 <h4 id="upsert-records">Upsert records</h4>
@@ -364,7 +406,7 @@ var record = await osduService.StorageService.getRecord(record_id);
 const new_or_updated_record = JSON.parse(
     fs.readFileSync('./record-123.json').toString()
 );
-var record = await osduService.StorageService.storeRecords([new_or_updated_record]);
+var record = await osduService.StorageService.V2.storeRecords([new_or_updated_record]);
 // { recordCount: 1, recordIds: [...], skippedRecordIds: [] }
 </code></pre></article>
     </section>

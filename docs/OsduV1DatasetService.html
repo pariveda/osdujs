@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OsduJS OsduQueryBuilder</title>
+  <title>OsduJS OsduV1DatasetService</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -98,7 +98,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Class</p>
-                    <h1>OsduQueryBuilder</h1>
+                    <h1>OsduV1DatasetService</h1>
                 </header>
                 
 
@@ -109,12 +109,12 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>OsduQueryBuilder<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>OsduV1DatasetService<span class="signature">(osdu_client, data_partition)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Class to build OSDU query bodies with friendly names for each available option</p>
+            <div class="class-description"><p>Class that provides named access to OSDU Dataset endpoints</p>
 <ul>
-<li>Note that querys built with this builder must at minimum specify the <a href="OsduQueryBuilder.html#kind">kind</a></li>
-<li>Follows the <a href="https://community.opengroup.org/osdu/documentation/-/wikis/Releases/R2.0/OSDU-Query-Syntax">OSDU Query Syntax</a></li>
+<li><a href="https://community.opengroup.org/osdu/platform/system/dataset/-/blob/master/docs/dataset.swagger.yaml">Service Documentation</a></li>
+<li><a href="https://community.opengroup.org/osdu/platform/system/dataset/-/blob/master/docs/dataset.swagger.yaml">API Documentation</a></li>
 </ul></div>
         
     
@@ -134,12 +134,12 @@
 
 
     
-    <h4 class="name" id="OsduQueryBuilder">
-        <a class="href-link" href="#OsduQueryBuilder">#</a>
+    <h4 class="name" id="OsduV1DatasetService">
+        <a class="href-link" href="#OsduV1DatasetService">#</a>
         
         <span class="code-name">
             
-                new OsduQueryBuilder<span class="signature">()</span><span class="type-signature"></span>
+                new OsduV1DatasetService<span class="signature">(osdu_client, data_partition)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -155,6 +155,82 @@
 
 
 
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>osdu_client</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="BaseOsduClient.html">BaseOsduClient</a></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>An implementation of the OSDU client class to broker communication with the OSDU API</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>data_partition</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The data partition against which requests will be made</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -193,9 +269,9 @@
 
     
         <p class="tag-source">
-            <a href="models_query_osduQueryBuilder.js.html" class="button">View Source</a>
+            <a href="service_dataset_v1.js.html" class="button">View Source</a>
             <span>
-                <a href="models_query_osduQueryBuilder.js.html">models/query/osduQueryBuilder.js</a>, <a href="models_query_osduQueryBuilder.js.html#line12">line 12</a>
+                <a href="service_dataset_v1.js.html">service/dataset/v1.js</a>, <a href="service_dataset_v1.js.html#line11">line 11</a>
             </span>
         </p>
     
@@ -252,12 +328,16 @@
 
 
     
-    <h4 class="name" id="aggregateBy">
-        <a class="href-link" href="#aggregateBy">#</a>
+    <h4 class="name" id="getDatasetRegistries">
+        <a class="href-link" href="#getDatasetRegistries">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                aggregateBy<span class="signature">(field)</span><span class="type-signature"></span>
+                getDatasetRegistries<span class="signature">(registryIds)</span><span class="type-signature"> &rarr; {Object}</span>
             
         </span>
     </h4>
@@ -266,7 +346,7 @@
     
     
     <div class="description">
-        <p>Set the field by which to aggregate results if aggregation is requested</p>
+        <p>Get dataset registry objects for the given list dataset registry IDs</p>
     </div>
     
 
@@ -304,13 +384,13 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>field</code></td>
+      <td class="name"><code>registryIds</code></td>
   
 
   <td class="type">
   
       
-<span class="param-type">string</span>
+<span class="param-type">Array.&lt;string></span>
 
 
   
@@ -320,7 +400,7 @@
 
   
 
-  <td class="description last"><p>The OSDU record field by which to aggregate results</p></td>
+  <td class="description last"><p>Identifiers for the dataset registries you wish to retrieve</p></td>
 </tr>
 
 
@@ -366,106 +446,9 @@
 
     
         <p class="tag-source">
-            <a href="models_query_osduQueryBuilder.js.html" class="button">View Source</a>
+            <a href="service_dataset_v1.js.html" class="button">View Source</a>
             <span>
-                <a href="models_query_osduQueryBuilder.js.html">models/query/osduQueryBuilder.js</a>, <a href="models_query_osduQueryBuilder.js.html#line115">line 115</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="build">
-        <a class="href-link" href="#build">#</a>
-        
-        <span class="code-name">
-            
-                build<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Construct the query request body based on the attributes set</p>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="models_query_osduQueryBuilder.js.html" class="button">View Source</a>
-            <span>
-                <a href="models_query_osduQueryBuilder.js.html">models/query/osduQueryBuilder.js</a>, <a href="models_query_osduQueryBuilder.js.html#line125">line 125</a>
+                <a href="service_dataset_v1.js.html">service/dataset/v1.js</a>, <a href="service_dataset_v1.js.html#line35">line 35</a>
             </span>
         </p>
     
@@ -496,7 +479,7 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>The JSON object that is passed into the body of the OSDU API Search request</p></div>
+    <div class='param-desc column is-7'><p>The API Response</p></div>
     
     
     <div class='column is-5 has-text-left'>
@@ -522,12 +505,16 @@
 
 
     
-    <h4 class="name" id="kind">
-        <a class="href-link" href="#kind">#</a>
+    <h4 class="name" id="getDatasetRegistry">
+        <a class="href-link" href="#getDatasetRegistry">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                kind<span class="signature">(kind)</span><span class="type-signature"></span>
+                getDatasetRegistry<span class="signature">(registryId)</span><span class="type-signature"> &rarr; {Object}</span>
             
         </span>
     </h4>
@@ -536,10 +523,7 @@
     
     
     <div class="description">
-        <p>Set the OSDU kind to filter the scope of the search.</p>
-<ul>
-<li>Accepts wildcards <code>*</code> within kind sections. (I.E. <code>*:osdu:*:0.2.0</code>)</li>
-</ul>
+        <p>Get dataset registry object for the given dataset registry ID</p>
     </div>
     
 
@@ -577,7 +561,7 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>kind</code></td>
+      <td class="name"><code>registryId</code></td>
   
 
   <td class="type">
@@ -593,7 +577,7 @@
 
   
 
-  <td class="description last"><p>The OSDU kind with which to filter the search</p></td>
+  <td class="description last"><p>Identifier for the dataset registry you wish to retrieve</p></td>
 </tr>
 
 
@@ -639,941 +623,15 @@
 
     
         <p class="tag-source">
-            <a href="models_query_osduQueryBuilder.js.html" class="button">View Source</a>
+            <a href="service_dataset_v1.js.html" class="button">View Source</a>
             <span>
-                <a href="models_query_osduQueryBuilder.js.html">models/query/osduQueryBuilder.js</a>, <a href="models_query_osduQueryBuilder.js.html#line25">line 25</a>
+                <a href="service_dataset_v1.js.html">service/dataset/v1.js</a>, <a href="service_dataset_v1.js.html#line26">line 26</a>
             </span>
         </p>
     
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="limit">
-        <a class="href-link" href="#limit">#</a>
-        
-        <span class="code-name">
-            
-                limit<span class="signature">(limit)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Set the maximum limit of records to return within the query results</p>
-<ul>
-<li>In paged queries, this sets the page size</li>
-</ul>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>limit</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">number</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>The maximum number of records (positive integer) to return</p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="models_query_osduQueryBuilder.js.html" class="button">View Source</a>
-            <span>
-                <a href="models_query_osduQueryBuilder.js.html">models/query/osduQueryBuilder.js</a>, <a href="models_query_osduQueryBuilder.js.html#line70">line 70</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="offset">
-        <a class="href-link" href="#offset">#</a>
-        
-        <span class="code-name">
-            
-                offset<span class="signature">(offset)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Set the offset value representing how many records should be skipped before collecting records to return</p>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>offset</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">number</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>The number of records (positive integer) to skip before collecting records to return</p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Recommended to use the paged query rather than attempting to page via offset</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="models_query_osduQueryBuilder.js.html" class="button">View Source</a>
-            <span>
-                <a href="models_query_osduQueryBuilder.js.html">models/query/osduQueryBuilder.js</a>, <a href="models_query_osduQueryBuilder.js.html#line60">line 60</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="query">
-        <a class="href-link" href="#query">#</a>
-        
-        <span class="code-name">
-            
-                query<span class="signature">(query_expression)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Set the OSDU compliant query expression to narrow the search results</p>
-<ul>
-<li>OSDU query syntax can be found in <a href="https://community.opengroup.org/osdu/documentation/-/wikis/Releases/R2.0/OSDU-Query-Syntax">OSDU documentation here</a></li>
-<li>Note that the passed in expression must be an instance of the <a href="OsduQueryExpression.html">Osdu Query Expression class</a></li>
-</ul>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>query_expression</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type"><a href="OsduQueryExpression.html">OsduQueryExpression</a></span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>The query expression used to narrow search results based on the available OSDU data</p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="models_query_osduQueryBuilder.js.html" class="button">View Source</a>
-            <span>
-                <a href="models_query_osduQueryBuilder.js.html">models/query/osduQueryBuilder.js</a>, <a href="models_query_osduQueryBuilder.js.html#line36">line 36</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="returnedFields">
-        <a class="href-link" href="#returnedFields">#</a>
-        
-        <span class="code-name">
-            
-                returnedFields<span class="signature">(returned_fields)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Set the fields to include on the returned records</p>
-<ul>
-<li>Will include these fields where found, but does not guarantee that all records will contain these fields</li>
-</ul>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>returned_fields</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Array.&lt;sring></span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="models_query_osduQueryBuilder.js.html" class="button">View Source</a>
-            <span>
-                <a href="models_query_osduQueryBuilder.js.html">models/query/osduQueryBuilder.js</a>, <a href="models_query_osduQueryBuilder.js.html#line80">line 80</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="sort">
-        <a class="href-link" href="#sort">#</a>
-        
-        <span class="code-name">
-            
-                sort<span class="signature">(fields, order)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Set the sort order of results prior to paging</p>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>fields</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Array.&lt;string></span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>The fields by which to order the results</p></td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>order</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Array.&lt;string></span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>The order (Ascending/Descending) in which to sort the results on each field. Only accepts &quot;ASC&quot; and &quot;DESC&quot;</p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="models_query_osduQueryBuilder.js.html" class="button">View Source</a>
-            <span>
-                <a href="models_query_osduQueryBuilder.js.html">models/query/osduQueryBuilder.js</a>, <a href="models_query_osduQueryBuilder.js.html#line94">line 94</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="spacialFilter">
-        <a class="href-link" href="#spacialFilter">#</a>
-        
-        <span class="code-name">
-            
-                spacialFilter<span class="signature">(spacial_filter)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <p>Set the spacial filter on the OSDU query</p>
-<ul>
-<li>Not yet supported.</li>
-</ul>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>spacial_filter</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">undefined</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="models_query_osduQueryBuilder.js.html" class="button">View Source</a>
-            <span>
-                <a href="models_query_osduQueryBuilder.js.html">models/query/osduQueryBuilder.js</a>, <a href="models_query_osduQueryBuilder.js.html#line50">line 50</a>
-            </span>
-        </p>
-    
-</dl>
 
 
 
@@ -1591,15 +649,23 @@
 
 
     <div class='columns method-parameter'>
-        <div class="column is-2"><label>Throws:</label></div>
+        <div class="column is-2"><label>Returns:</label></div>
         <div class="column is-10">
             
                     
+
 <div class="columns">
     
+    <div class='param-desc column is-7'><p>The API Response</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
         
-            <div class='param-desc column is-12'><p>Error</p></div>
-        
+<span class="param-type">Object</span>
+
+
+    </div>
     
 </div>
 
@@ -1608,6 +674,712 @@
     </div>
 
 
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getMultipleRetrievalInstructions">
+        <a class="href-link" href="#getMultipleRetrievalInstructions">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                getMultipleRetrievalInstructions<span class="signature">(registryIds)</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Get instructions on how to retrieve a given dataset registry</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>registryIds</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Array.&lt;string></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Identifiers for the dataset registries you wish to retrieve source data for</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="service_dataset_v1.js.html" class="button">View Source</a>
+            <span>
+                <a href="service_dataset_v1.js.html">service/dataset/v1.js</a>, <a href="service_dataset_v1.js.html#line71">line 71</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The API Response</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Object</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getRetrievalInstructions">
+        <a class="href-link" href="#getRetrievalInstructions">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                getRetrievalInstructions<span class="signature">(registryId)</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Get instructions on how to retrieve a given dataset registry</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>registryId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Identifier for the dataset registry you wish to retrieve source data for</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="service_dataset_v1.js.html" class="button">View Source</a>
+            <span>
+                <a href="service_dataset_v1.js.html">service/dataset/v1.js</a>, <a href="service_dataset_v1.js.html#line62">line 62</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The API Response</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Object</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getStorageInstructions">
+        <a class="href-link" href="#getStorageInstructions">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                getStorageInstructions<span class="signature">(kindSubType)</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Get instructions on how to store a given dataset sub type</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>kindSubType</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Identifier for the kind of dataset you wish to store source data for</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="service_dataset_v1.js.html" class="button">View Source</a>
+            <span>
+                <a href="service_dataset_v1.js.html">service/dataset/v1.js</a>, <a href="service_dataset_v1.js.html#line53">line 53</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The API Response</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Object</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="registerDatasets">
+        <a class="href-link" href="#registerDatasets">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                registerDatasets<span class="signature">(datasetRegistries)</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Register a list of datasets</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>datasetRegistries</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Array.&lt;object></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>List of dataset registry objects to register</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="service_dataset_v1.js.html" class="button">View Source</a>
+            <span>
+                <a href="service_dataset_v1.js.html">service/dataset/v1.js</a>, <a href="service_dataset_v1.js.html#line44">line 44</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The API Response</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Object</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 

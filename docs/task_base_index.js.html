@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OsduJS service/R2/base.js</title>
+  <title>OsduJS task/base/index.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -92,7 +92,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3><a href="global.html">Global</a></h3></div><div class="category"><h2>Clients</h2><h3>Classes / AWS</h3><ul><li><a href="AWSOsduBaseCredentialProvider.html">AWSOsduBaseCredentialProvider</a></li><li><a href="AWSOsduClient.html">AWSOsduClient</a></li><li><a href="AWSOsduSimpleCredentialProvider.html">AWSOsduSimpleCredentialProvider</a></li><li><a href="AWSOsduSSMCredentialProvider.html">AWSOsduSSMCredentialProvider</a></li></ul><h3>Classes</h3><ul><li><a href="BaseOsduClient.html">BaseOsduClient</a></li></ul><h3>Classes / Simple</h3><ul><li><a href="SimpleOsduClient.html">SimpleOsduClient</a></li></ul></div><div class="category"><h2>Models</h2><h3>Classes / Query</h3><ul><li><a href="OsduQueryBuilder.html">OsduQueryBuilder</a></li><li><a href="OsduQueryExpression.html">OsduQueryExpression</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes / R2</h3><ul><li><a href="OsduR2BaseService.html">OsduR2BaseService</a></li><li><a href="OsduR2DeliveryService.html">OsduR2DeliveryService</a></li><li><a href="OsduR2EntitlementsService.html">OsduR2EntitlementsService</a></li><li><a href="OsduR2LegalService.html">OsduR2LegalService</a></li><li><a href="OsduR2QueryService.html">OsduR2QueryService</a></li><li><a href="OsduR2Service.html">OsduR2Service</a></li><li><a href="OsduR2StorageService.html">OsduR2StorageService</a></li></ul></div><div class="category"><h2>Tasks</h2><h3>Classes / R2</h3><ul><li><a href="OsduR2BaseTask.html">OsduR2BaseTask</a></li><li><a href="OsduR2DeliverByQueryTask.html">OsduR2DeliverByQueryTask</a></li><li><a href="OsduR2UpdateByQueryTask.html">OsduR2UpdateByQueryTask</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3><a href="global.html">Global</a></h3></div><div class="category"><h2>Clients</h2><h3>Classes / AWS</h3><ul><li><a href="AWSOsduBaseCredentialProvider.html">AWSOsduBaseCredentialProvider</a></li><li><a href="AWSOsduClient.html">AWSOsduClient</a></li><li><a href="AWSOsduSimpleCredentialProvider.html">AWSOsduSimpleCredentialProvider</a></li><li><a href="AWSOsduSSMCredentialProvider.html">AWSOsduSSMCredentialProvider</a></li></ul><h3>Classes</h3><ul><li><a href="BaseOsduClient.html">BaseOsduClient</a></li></ul><h3>Classes / Simple</h3><ul><li><a href="SimpleOsduClient.html">SimpleOsduClient</a></li></ul></div><div class="category"><h2>Models</h2><h3>Classes / Query</h3><ul><li><a href="OsduQueryBuilder.html">OsduQueryBuilder</a></li><li><a href="OsduQueryExpression.html">OsduQueryExpression</a></li></ul><h3>Classes / Schema</h3><ul><li><a href="OsduSchemaQueryBuilder.html">OsduSchemaQueryBuilder</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="OsduBaseService.html">OsduBaseService</a></li><li><a href="OsduService.html">OsduService</a></li></ul><h3>Classes / Dataset</h3><ul><li><a href="OsduDatasetService.html">OsduDatasetService</a></li><li><a href="OsduV1DatasetService.html">OsduV1DatasetService</a></li></ul><h3>Classes / Delivery</h3><ul><li><a href="OsduDeliveryService.html">OsduDeliveryService</a></li><li><a href="OsduV2DeliveryService.html">OsduV2DeliveryService</a></li></ul><h3>Classes / Entitlements</h3><ul><li><a href="OsduEntitlementsService.html">OsduEntitlementsService</a></li></ul><h3>Classes / Legal</h3><ul><li><a href="OsduLegalService.html">OsduLegalService</a></li><li><a href="OsduV1LegalService.html">OsduV1LegalService</a></li></ul><h3>Classes / Query</h3><ul><li><a href="OsduQueryService.html">OsduQueryService</a></li><li><a href="OsduV2QueryService.html">OsduV2QueryService</a></li></ul><h3>Classes / Schema</h3><ul><li><a href="OsduSchemaService.html">OsduSchemaService</a></li><li><a href="OsduV1SchemaService.html">OsduV1SchemaService</a></li></ul><h3>Classes / Storage</h3><ul><li><a href="OsduStorageService.html">OsduStorageService</a></li><li><a href="OsduV2StorageService.html">OsduV2StorageService</a></li></ul></div><div class="category"><h2>Tasks</h2><h3>Classes</h3><ul><li><a href="OsduBaseTask.html">OsduBaseTask</a></li></ul><h3>Classes / R2</h3><ul><li><a href="OsduR2DeliverByQueryTask.html">OsduR2DeliverByQueryTask</a></li><li><a href="OsduR2UpdateByQueryTask.html">OsduR2UpdateByQueryTask</a></li></ul></div>
                 
             </nav>
         </div>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>service/R2/base.js</h1>
+                    <h1>task/base/index.js</h1>
                 </header>
                 
 
@@ -110,30 +110,29 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Abstract class that provides the common bones for OSDU API services
- * - Provides the framework for accepting an OSDU client and setting a data partition
+ * Abstract class that provides the common bones for OSDU common task patterns
+ * - Provides the framework for accepting an OSDU service 
  * - Agnostic to hosting framework (AWS/Azure/GCP/etc.) of the OSDU API
  * @class
  * @abstract
- * @category Services
- * @subcategory R2
+ * @category Tasks
  */
-class OsduR2BaseService {
+class OsduBaseTask {
     /**
      * @constructor
-     * @param {BaseOsduClient} osdu_client - An implementation of the OSDU client class to broker communication with the OSDU API
+     * @param {OsduBaseService} osdu_service - An implementation of the OSDU service class to broker communication with the OSDU API services
      * @param {string} data_partition - The data partition against which requests will be made
      */
-    constructor(osdu_client, data_partition) {
-        if (!osdu_client) {
-            throw new Error(`Must provide an OSDU client to power the OSDU service`);
+    constructor(osdu_service, data_partition) {
+        if (!osdu_service) {
+            throw new Error(`Must provide an OSDU service to power the OSDU task`);
         }
-        this._client = osdu_client;
+        this._service = osdu_service;
         this._dataPartition = data_partition;
     }
 }
 
-module.exports = OsduR2BaseService;</code></pre>
+module.exports = OsduBaseTask;</code></pre>
         </article>
     </section>
 
