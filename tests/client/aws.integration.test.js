@@ -1,6 +1,6 @@
 const {
     AWSOsduClient,
-    OsduR2Service,
+    OsduService,
     OsduQueryExpression,
     OsduQueryBuilder,
     AWSOsduSimpleCredentialProvider
@@ -35,12 +35,12 @@ describe("AWSOsduClient tests", function() {
     it("Can perform general query", async function() {
         // Assemble
         var awsClient = createAWSOSDUClient();
-        var osduService = new OsduR2Service(awsClient, 'opendes');
-        const kind = `opendes:osdu:file:0.2.0`;
+        var osduService = new OsduService(awsClient, 'opendes');
+        const kind = `opendes:wks:dataset--File.Generic:1.0.0`;
         const limit = 2;
 
         // Act
-        var queryResults = await osduService.QueryService.query(
+        var queryResults = await osduService.QueryService.V2.query(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .limit(limit)
@@ -55,21 +55,21 @@ describe("AWSOsduClient tests", function() {
     it("Can perform a query with an expression", async function() {
         // Assemble
         var awsClient = createAWSOSDUClient();
-        var osduService = new OsduR2Service(awsClient, 'opendes');
-        const kind = `opendes:osdu:file:0.2.0`;
+        var osduService = new OsduService(awsClient, 'opendes');
+        const kind = `opendes:wks:dataset--File.Generic:1.0.0`;
 
         // Act
-        var queryResults = await osduService.QueryService.query(
+        var queryResults = await osduService.QueryService.V2.query(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .limit(1)
                 .build()
         );
-        queryResults = await osduService.QueryService.query(
+        queryResults = await osduService.QueryService.V2.query(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .query(
-                    new OsduQueryExpression(`data.ResourceID:\"${queryResults.results[0].data.ResourceID}\"`)
+                    new OsduQueryExpression(`id:\"${queryResults.results[0].id}\"`)
                 )
                 .build()
         );
@@ -82,23 +82,23 @@ describe("AWSOsduClient tests", function() {
     it("Can perform a query with a more complex expression", async function() {
         // Assemble
         var awsClient = createAWSOSDUClient();
-        var osduService = new OsduR2Service(awsClient, 'opendes');
-        const kind = `opendes:osdu:file:0.2.0`;
+        var osduService = new OsduService(awsClient, 'opendes');
+        const kind = `opendes:wks:dataset--File.Generic:1.0.0`;
 
         // Act
-        var queryResults = await osduService.QueryService.query(
+        var queryResults = await osduService.QueryService.V2.query(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .limit(2)
                 .build()
         );
-        queryResults = await osduService.QueryService.query(
+        queryResults = await osduService.QueryService.V2.query(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .query(
                     OsduQueryExpression.FromOperator('OR', 
-                        new OsduQueryExpression(`data.ResourceID:\"${queryResults.results[0].data.ResourceID}\"`),
-                        new OsduQueryExpression(`data.ResourceID:\"${queryResults.results[1].data.ResourceID}\"`)
+                        new OsduQueryExpression(`id:\"${queryResults.results[0].id}\"`),
+                        new OsduQueryExpression(`id:\"${queryResults.results[1].id}\"`)
                     )
                 )
                 .build()
@@ -112,23 +112,23 @@ describe("AWSOsduClient tests", function() {
     it("Can perform query all", async function() {
         // Assemble
         var awsClient = createAWSOSDUClient();
-        var osduService = new OsduR2Service(awsClient, 'opendes');
-        const kind = `opendes:osdu:file:0.2.0`;
+        var osduService = new OsduService(awsClient, 'opendes');
+        const kind = `opendes:wks:dataset--File.Generic:1.0.0`;
 
         // Act
-        var queryResults = await osduService.QueryService.query(
+        var queryResults = await osduService.QueryService.V2.query(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .limit(2)
                 .build()
         );
-        queryResults = await osduService.QueryService.queryAll(
+        queryResults = await osduService.QueryService.V2.queryAll(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .query(
                     OsduQueryExpression.FromOperator('OR', 
-                        new OsduQueryExpression(`data.ResourceID:\"${queryResults.results[0].data.ResourceID}\"`),
-                        new OsduQueryExpression(`data.ResourceID:\"${queryResults.results[1].data.ResourceID}\"`)
+                        new OsduQueryExpression(`id:\"${queryResults.results[0].id}\"`),
+                        new OsduQueryExpression(`id:\"${queryResults.results[1].id}\"`)
                     )
                 )
                 .limit(1)
@@ -144,17 +144,17 @@ describe("AWSOsduClient tests", function() {
     it("Can get a record", async function() {
         // Assemble
         var awsClient = createAWSOSDUClient();
-        var osduService = new OsduR2Service(awsClient, 'opendes');
+        var osduService = new OsduService(awsClient, 'opendes');
 
         // Act
-        var queryResults = await osduService.QueryService.query(
+        var queryResults = await osduService.QueryService.V2.query(
             (new OsduQueryBuilder())
                 .kind('*:*:*:*')
                 .limit(1)
                 .build()
         );
         const recordId = queryResults.results[0].id;
-        var record = await osduService.StorageService.getRecord(recordId);
+        var record = await osduService.StorageService.V2.getRecord(recordId);
 
         // Assert
         assert.strictEqual(record.id, recordId, `Returned exactly the record specified in the request`);
@@ -163,10 +163,10 @@ describe("AWSOsduClient tests", function() {
     it("Can get multiple records", async function() {
         // Assemble
         var awsClient = createAWSOSDUClient();
-        var osduService = new OsduR2Service(awsClient, 'opendes');
+        var osduService = new OsduService(awsClient, 'opendes');
 
         // Act
-        var queryResults = await osduService.QueryService.query(
+        var queryResults = await osduService.QueryService.V2.query(
             (new OsduQueryBuilder())
                 .kind('*:*:*:*')
                 .limit(2)
@@ -176,7 +176,7 @@ describe("AWSOsduClient tests", function() {
             queryResults.results[0].id,
             queryResults.results[1].id
         ];
-        var records = await osduService.StorageService.getRecords(recordIds);
+        var records = await osduService.StorageService.V2.getRecords(recordIds);
 
         // Assert
         assert.strictEqual(records.records[0].id, recordIds[0], `Returned exactly the records specified in the request`);

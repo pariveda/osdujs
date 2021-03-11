@@ -23,7 +23,7 @@ declare class AWSOsduClient extends BaseOsduClient {
         cognito_client_id: string;
         aws_region: string;
         credential_provider: any;
-        aws_profile: string;
+        aws_profile?: string;
     });
     _cognitoClientId: string;
     _awsRegion: string;

@@ -1,3 +1,3 @@
 module.exports = {
-    ...require('./R2')
+    OsduService: require('./service')
 };

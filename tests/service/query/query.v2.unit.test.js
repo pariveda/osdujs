@@ -1,11 +1,11 @@
 const {
-    OsduR2Service,
+    OsduService,
     OsduQueryExpression,
     OsduQueryBuilder
 } = require('../../../src');
 const assert = require('assert').strict;
 
-describe("OsduR2QueryService tests", function() {
+describe("OsduV2QueryService tests", function() {
     it("Can perform a query with a complex expression", async function() {
         // Assemble
         const kind = `opendes:osdu:file:0.2.0`;
@@ -26,10 +26,10 @@ describe("OsduR2QueryService tests", function() {
                 };
             }
         };
-        var osduService = new OsduR2Service(client, 'opendes');
+        var osduService = new OsduService(client, 'opendes');
 
         // Act
-        var queryResults = await osduService.QueryService.query(
+        var queryResults = await osduService.QueryService.V2.query(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .query(
@@ -68,10 +68,10 @@ describe("OsduR2QueryService tests", function() {
                 };
             }
         };
-        var osduService = new OsduR2Service(client, 'opendes');
+        var osduService = new OsduService(client, 'opendes');
 
         // Act
-        var queryResults = await osduService.QueryService.queryWithPaging(
+        var queryResults = await osduService.QueryService.V2.queryWithPaging(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .query(
@@ -112,10 +112,10 @@ describe("OsduR2QueryService tests", function() {
                 };
             }
         };
-        var osduService = new OsduR2Service(client, 'opendes');
+        var osduService = new OsduService(client, 'opendes');
 
         // Act
-        var queryResults = await osduService.QueryService.queryWithPaging(
+        var queryResults = await osduService.QueryService.V2.queryWithPaging(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .query(
@@ -172,10 +172,10 @@ describe("OsduR2QueryService tests", function() {
                 }
             }
         };
-        var osduService = new OsduR2Service(client, 'opendes');
+        var osduService = new OsduService(client, 'opendes');
 
         // Act
-        var queryResults = await osduService.QueryService.queryAll(
+        var queryResults = await osduService.QueryService.V2.queryAll(
             (new OsduQueryBuilder())
                 .kind(kind)
                 .query(
