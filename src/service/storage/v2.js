@@ -22,12 +22,17 @@ class OsduV2StorageService extends OsduBaseService {
     /**
      * Get OSDU records for the specified ids
      * @param {string[]} record_ids - Record identifiers of the OSDU records to retrieve
+     * @param {string[]} attributes - Attributes to return
      * @returns {Object} The API Response
      */
-    async getRecords(record_ids) {
-        return await this._client.post(`/api/storage/v2/query/records`, {
+    async getRecords(record_ids, attributes = []) {
+        var requestBody = {
             records: record_ids
-        }, this._dataPartition)
+        };
+        if (attributes.length) {
+            requestBody.attributes = attributes;
+        }
+        return await this._client.post(`/api/storage/v2/query/records`, requestBody, this._dataPartition)
     }
     /**
      * Get OSDU records for the specified id

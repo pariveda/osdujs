@@ -18,9 +18,13 @@ declare class OsduService {
     LegalService: OsduLegalService;
     QueryService: OsduQueryService;
     StorageService: OsduStorageService;
+    DatasetService: OsduDatasetService;
+    SchemaService: OsduSchemaService;
 }
 import OsduDeliveryService = require("./delivery");
 import OsduEntitlementsService = require("./entitlements");
 import OsduLegalService = require("./legal");
 import OsduQueryService = require("./query");
 import OsduStorageService = require("./storage");
+import OsduDatasetService = require("./dataset");
+import OsduSchemaService = require("./schema");

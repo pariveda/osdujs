@@ -11,9 +11,10 @@ declare class OsduV2StorageService extends OsduBaseService {
     /**
      * Get OSDU records for the specified ids
      * @param {string[]} record_ids - Record identifiers of the OSDU records to retrieve
+     * @param {string[]} attributes - Attributes to return
      * @returns {Object} The API Response
      */
-    getRecords(record_ids: string[]): any;
+    getRecords(record_ids: string[], attributes?: string[]): any;
     /**
      * Get OSDU records for the specified id
      * @param {string} record_id - Record identifier of the OSDU record to retrieve
