@@ -4,7 +4,7 @@ declare const _exports: {
         DeliverByQuery: typeof import("./task/R2/deliverByQuery");
     };
     OsduService: typeof import("./service/service");
-    OsduSchemaQueryBuilder: typeof import("./models/schema/osduSchemaQUeryBuilder");
+    OsduSchemaQueryBuilder: typeof import("./models/schema/osduSchemaQueryBuilder");
     OsduQueryBuilder: typeof import("./models/query/osduQueryBuilder");
     OsduQueryExpression: typeof import("./models/query/osduQueryExpression");
     AWSOsduClient: typeof import("./client/aws/aws");

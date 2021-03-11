@@ -1,1 +1,1 @@
-export var OsduSchemaQueryBuilder: typeof import("./osduSchemaQUeryBuilder");
+export var OsduSchemaQueryBuilder: typeof import("./osduSchemaQueryBuilder");

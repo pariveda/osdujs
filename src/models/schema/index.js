@@ -1,1 +1,1 @@
-module.exports.OsduSchemaQueryBuilder = require('./osduSchemaQUeryBuilder');
+module.exports.OsduSchemaQueryBuilder = require('./osduSchemaQueryBuilder');
