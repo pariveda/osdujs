@@ -7,6 +7,7 @@ declare const _exports: {
     OsduSchemaQueryBuilder: typeof import("./models/schema/osduSchemaQueryBuilder");
     OsduQueryBuilder: typeof import("./models/query/osduQueryBuilder");
     OsduQueryExpression: typeof import("./models/query/osduQueryExpression");
+    ServiceConnectionOsduClient: typeof import("./client/service/service");
     AWSOsduClient: typeof import("./client/aws/aws");
     AWSOsduSimpleCredentialProvider: typeof import("./client/aws/simpleCredentialProvider");
     AWSOsduSSMCredentialProvider: typeof import("./client/aws/ssmCredentialProvider");
